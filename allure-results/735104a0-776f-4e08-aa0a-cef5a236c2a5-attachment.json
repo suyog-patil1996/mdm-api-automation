@@ -1,0 +1,735 @@
+{
+    "status": "OK",
+    "statusCode": 200,
+    "message": "Vendor registered successfully.",
+    "data": {
+        "id": 2818,
+        "uniqueCode": "VE00022",
+        "nameOfCompany": "AUTO_VENDOR_1784119366128",
+        "registeredUnder": "PROPRIETORY",
+        "address1": "Pune",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "zipCode": 411045,
+        "country": "India",
+        "panCard": "XJNSA4563M",
+        "ownerName": "Automation User 1688",
+        "noOfVehicle": 0,
+        "dcModelList": [
+            {
+                "id": 51,
+                "dcCode": "DC-BNR-DEMO",
+                "status": "ACTIVE",
+                "deliveryCentreName": "DC-Baner-Demo",
+                "deliveryCenterName": "DC-Baner-Demo",
+                "address1": "baner ,   ",
+                "city": "Pune",
+                "cityId": "9c9a92aa-3c25-11ee-bd0f-0a9d1c57a228",
+                "state": "Maharashtra",
+                "country": "India",
+                "zipCode": "411045",
+                "latitude": 18.568408,
+                "longtitude": 73.76912,
+                "longitude": 73.76912,
+                "dcTotalCapacity": 300.0,
+                "dcColdCapacity": 75.0,
+                "dcDryCapacity": 100.0,
+                "dcFrozenCapacity": 75.0,
+                "clients": [
+                    {
+                        "id": 5,
+                        "clientName": "Demo Client",
+                        "userId": 0,
+                        "status": "ACTIVE",
+                        "registeredUnder": "PVTLTD",
+                        "nameOfCompany": "Demo Client",
+                        "primaryPhoneNumber": "1189750256",
+                        "clientProjects": [
+                            {
+                                "id": 14,
+                                "clientId": 5,
+                                "projectName": "Demo-project",
+                                "primaryContactName": "ops.dummp13",
+                                "primaryContactNumber": "1189750256",
+                                "primaryEmailId": "test15673434125@test.com",
+                                "status": "ACTIVE",
+                                "companyDetails": [
+                                    {
+                                        "createdDate": null,
+                                        "createdBy": null,
+                                        "updatedDate": null,
+                                        "updatedBy": null,
+                                        "id": 1,
+                                        "companyName": "Yatnavat Technologies Private Limited",
+                                        "nickName": "Yatnavat",
+                                        "bankName": null,
+                                        "accountNumber": null,
+                                        "ifscCode": null,
+                                        "gstNumber": null,
+                                        "panCard": null,
+                                        "registerAddress": null,
+                                        "fromDate": "2025-08-01",
+                                        "toDate": null,
+                                        "applicableMonth": null
+                                    },
+                                    {
+                                        "createdDate": null,
+                                        "createdBy": null,
+                                        "updatedDate": null,
+                                        "updatedBy": null,
+                                        "id": 2,
+                                        "companyName": "L-Kart Logi Tech Solutions",
+                                        "nickName": "Lkart PF",
+                                        "bankName": null,
+                                        "accountNumber": null,
+                                        "ifscCode": null,
+                                        "gstNumber": null,
+                                        "panCard": null,
+                                        "registerAddress": null,
+                                        "fromDate": "2025-01-01",
+                                        "toDate": "2025-07-31",
+                                        "applicableMonth": null
+                                    }
+                                ],
+                                "contractRateVariationLevel": "DC",
+                                "isGpsCompulsory": false
+                            },
+                            {
+                                "id": 86,
+                                "clientId": 5,
+                                "projectName": "YYY Demo",
+                                "primaryContactName": "YY RR PPP",
+                                "primaryContactNumber": "2312322332",
+                                "primaryEmailId": "gdheteyy@email.in",
+                                "status": "DEACTIVATE",
+                                "companyDetails": [
+                                    {
+                                        "createdDate": null,
+                                        "createdBy": null,
+                                        "updatedDate": null,
+                                        "updatedBy": null,
+                                        "id": 2,
+                                        "companyName": "L-Kart Logi Tech Solutions",
+                                        "nickName": "Lkart PF",
+                                        "bankName": null,
+                                        "accountNumber": null,
+                                        "ifscCode": null,
+                                        "gstNumber": null,
+                                        "panCard": null,
+                                        "registerAddress": null,
+                                        "fromDate": "2025-08-01",
+                                        "toDate": null,
+                                        "applicableMonth": null
+                                    },
+                                    {
+                                        "createdDate": null,
+                                        "createdBy": null,
+                                        "updatedDate": null,
+                                        "updatedBy": null,
+                                        "id": 1,
+                                        "companyName": "Yatnavat Technologies Private Limited",
+                                        "nickName": "Yatnavat",
+                                        "bankName": null,
+                                        "accountNumber": null,
+                                        "ifscCode": null,
+                                        "gstNumber": null,
+                                        "panCard": null,
+                                        "registerAddress": null,
+                                        "fromDate": "2025-01-01",
+                                        "toDate": "2025-07-31",
+                                        "applicableMonth": null
+                                    }
+                                ],
+                                "contractRateVariationLevel": "COUNTRY",
+                                "isGpsCompulsory": false
+                            },
+                            {
+                                "id": 90,
+                                "clientId": 5,
+                                "projectName": "test",
+                                "primaryContactName": "tesr",
+                                "primaryContactNumber": "1234567890",
+                                "primaryEmailId": " johndoe@example.com",
+                                "status": "DEACTIVATE",
+                                "contractRateVariationLevel": "COUNTRY",
+                                "isGpsCompulsory": false
+                            }
+                        ],
+                        "isGpsCompulsory": false
+                    }
+                ],
+                "attributes": {
+                    "enableGeoFencing": false,
+                    "dpCheckInRange": null,
+                    "dcCheckInRange": 100,
+                    "enableDcGeofencing": false,
+                    "returnDcCheckInRange": -1,
+                    "enablePickupGeoFencing": false,
+                    "multipleIrRunAllowed": false,
+                    "useGmapApi": true,
+                    "useMapboxApi": false,
+                    "vehicleCount": 0,
+                    "maxDummyTrips": 0,
+                    "dummyTrips": true,
+                    "updateTripProfitability": false,
+                    "autoLoadingEnabled": true,
+                    "podRequired": false,
+                    "noOfPodRequired": 1,
+                    "popRequired": false,
+                    "volumeFormula": "#weight * 2",
+                    "maxNoOfTripsPerDayPerVehicle": 5,
+                    "autoTripStart": false,
+                    "autoTripAssign": false,
+                    "autoDpCheckIn": false,
+                    "autoDpCheckOut": false,
+                    "allowScanningForLoading": false,
+                    "timeSlots": null,
+                    "quantityUnit": null,
+                    "pickupFailureReasons": null,
+                    "isMultipleDpCheckInAllowed": true,
+                    "dropFailureReasons": null,
+                    "maxPopCount": 3,
+                    "maxPodCount": 3,
+                    "popSlot": [
+                        {
+                            "label": "POP1",
+                            "sequence": 1,
+                            "mandatory": false
+                        },
+                        {
+                            "label": "POP2",
+                            "sequence": 2,
+                            "mandatory": false
+                        },
+                        {
+                            "label": "POP3",
+                            "sequence": 3,
+                            "mandatory": false
+                        }
+                    ],
+                    "podSlot": [
+                        {
+                            "label": "POD1",
+                            "sequence": 1,
+                            "mandatory": false
+                        },
+                        {
+                            "label": "POD2",
+                            "sequence": 2,
+                            "mandatory": false
+                        },
+                        {
+                            "label": "POD3",
+                            "sequence": 3,
+                            "mandatory": false
+                        }
+                    ],
+                    "enableRouteDeviationTracking": false,
+                    "codSettlementMode": "DRIVER_PIS",
+                    "updateDeliverySequenceOnPickup": false,
+                    "gpsBufferDays": null,
+                    "gpsBufferResetDays": null,
+                    "returnOrderAllowed": false,
+                    "dynamicTripCreation": false,
+                    "odometerCompulsary": true,
+                    "odometerImageCompulsary": true,
+                    "supervisorHomeDc": false,
+                    "bdcDc": false
+                },
+                "overrideDPDeliveryWindow": false,
+                "clientId": 5,
+                "clientProjectId": 14,
+                "isPieKartDC": false,
+                "dcShiftConfigurations": [
+                    {
+                        "id": 99,
+                        "shiftName": "DAY",
+                        "shiftStartTime": "03:30",
+                        "shiftEndTime": "10:30",
+                        "clientShiftStartTime": "03:30",
+                        "clientShiftEndTime": "10:30",
+                        "maxBeforeTimeDcCheckInMinutes": 90,
+                        "vehicleDcCheckInTime": "03:15",
+                        "vehicleDcCheckOutTime": "03:30",
+                        "vehicleReturnToDcTime": "10:30",
+                        "supervisorCheckInTime": "03:30",
+                        "supervisorCheckOutTime": "10:30",
+                        "pickupSequenceRunAllowed": false,
+                        "attributes": {
+                            "timeSlots": [
+                                "03:00",
+                                "04:00",
+                                "05:00",
+                                "06:00",
+                                "07:00",
+                                "08:00",
+                                "09:00",
+                                "10:00",
+                                "11:00",
+                                "12:00"
+                            ],
+                            "quantityUnit": "KILOGRAM"
+                        },
+                        "status": "ACTIVE"
+                    },
+                    {
+                        "id": 183,
+                        "shiftName": "EVENING",
+                        "shiftStartTime": "12:30",
+                        "shiftEndTime": "18:30",
+                        "clientShiftStartTime": "12:30",
+                        "clientShiftEndTime": "18:30",
+                        "maxBeforeTimeDcCheckInMinutes": 90,
+                        "vehicleDcCheckInTime": "12:15",
+                        "vehicleDcCheckOutTime": "12:30",
+                        "vehicleReturnToDcTime": "18:30",
+                        "supervisorCheckInTime": "12:30",
+                        "supervisorCheckOutTime": "18:30",
+                        "pickupSequenceRunAllowed": false,
+                        "attributes": {
+                            "timeSlots": [
+                                "03:00",
+                                "04:00",
+                                "05:00",
+                                "06:00",
+                                "07:00",
+                                "08:00",
+                                "09:00",
+                                "10:00",
+                                "11:00",
+                                "12:00"
+                            ],
+                            "quantityUnit": "KILOGRAM"
+                        },
+                        "status": "ACTIVE"
+                    },
+                    {
+                        "id": 764,
+                        "shiftName": "EVENING",
+                        "shiftStartTime": "10:30",
+                        "shiftEndTime": "18:00",
+                        "clientShiftStartTime": "10:30",
+                        "clientShiftEndTime": "18:00",
+                        "maxBeforeTimeDcCheckInMinutes": 30,
+                        "vehicleDcCheckInTime": "10:30",
+                        "vehicleDcCheckOutTime": "11:00",
+                        "vehicleReturnToDcTime": "18:00",
+                        "supervisorCheckInTime": "10:30",
+                        "supervisorCheckOutTime": "18:00",
+                        "pickupSequenceRunAllowed": false,
+                        "attributes": {
+                            "timeSlots": [
+                                "03:00",
+                                "04:00",
+                                "05:00",
+                                "06:00",
+                                "07:00",
+                                "08:00",
+                                "09:00",
+                                "10:00",
+                                "11:00",
+                                "12:00"
+                            ],
+                            "quantityUnit": "KILOGRAM"
+                        },
+                        "status": "ACTIVE"
+                    }
+                ],
+                "autoRoutingSetting": {
+                    "id": 5,
+                    "averageSpeed": 20.0,
+                    "timeSlotDuration": 720.0,
+                    "maxDpsPerTimeSlot": 4.0,
+                    "averageUnloadingTime": 10,
+                    "maxDpsPerVehicleorDay": 8.0,
+                    "dpCoverageKM": 10.0,
+                    "useCluster": false,
+                    "useGoogleWaypoints": false,
+                    "useNetworkIntelligence": false,
+                    "isBulkDpBreaking": false,
+                    "enableSkuBreaking": false,
+                    "activeIrEngine": "optimus",
+                    "routeBackend": "osrm",
+                    "distanceMatrixBackend": "osrm"
+                },
+                "cityDto": {
+                    "id": "9c9a92aa-3c25-11ee-bd0f-0a9d1c57a228",
+                    "name": "Pune",
+                    "state": {
+                        "id": "9c855c48-3c25-11ee-bd0f-0a9d1c57a228",
+                        "name": "Maharashtra",
+                        "latitude": 19.889142,
+                        "longitude": 76.008442,
+                        "languages": [
+                            
+                        ],
+                        "timeZones": null,
+                        "iso2Code": "MH,DD",
+                        "country": {
+                            "id": "9c7ac8b9-3c25-11ee-bd0f-0a9d1c57a228",
+                            "name": "India",
+                            "latitude": 23.638443,
+                            "longitude": 80.312222,
+                            "capital": "New Delhi",
+                            "currencyName": "Indian rupee",
+                            "currencyCode": "INR",
+                            "currencySymbol": "₹",
+                            "timeZones": [
+                                {
+                                    "tzName": "Indian Standard Time",
+                                    "zoneName": "Asia/Kolkata",
+                                    "gmtOffset": 19800,
+                                    "abbreviation": "IST",
+                                    "gmtOffsetName": "UTC+05:30"
+                                }
+                            ],
+                            "phoneCode": "91",
+                            "iso2Code": "IN",
+                            "iso3Code": "IND",
+                            "numericCode": "356",
+                            "emoji": "??"
+                        }
+                    },
+                    "latitude": 18.51957,
+                    "longitude": 73.85535,
+                    "versionDate": "2023-08-16T00:00:00",
+                    "versionNumber": 1,
+                    "timeZone": "IST"
+                },
+                "supplyAddress": "baner ,   ",
+                "billingAddress": "baner",
+                "createdByUser": {
+                    "id": 341,
+                    "username": "vishnu.gholve@oorjaa.tech",
+                    "email": "vishnu.gholve@oorjaa.tech",
+                    "phoneNumber": "1541565616",
+                    "firstName": "Vishnu",
+                    "lastName": "Gholve",
+                    "clientId": 0,
+                    "sessionExpire": 0,
+                    "refreshExpire": 0,
+                    "validUserDetails": true,
+                    "selfSignup": false
+                },
+                "createdBy": "341",
+                "createdDate": "2020-07-29T06:19:56.481+00:00",
+                "updatedBy": "26496",
+                "updatedDate": "2026-06-24T07:13:43.183+00:00",
+                "commercialType": "FIXED",
+                "businessType": "MID_MILE",
+                "requiredVehicles": [
+                    {
+                        "baseVehicleTypeId": 59,
+                        "vehicleCode": "4W-2.5T-Diesel",
+                        "shortVehicleCode": "4W-2.5T",
+                        "vehicleCount": 2,
+                        "weight": "2.5T",
+                        "length": 10.0,
+                        "height": 5.0,
+                        "startDate": "2024-12-12",
+                        "versionNumber": 8,
+                        "dcShiftConfigurationId": 99,
+                        "shiftName": "DAY",
+                        "shiftStartTime": "03:30",
+                        "shiftEndTime": "10:30"
+                    }
+                ],
+                "tripCount": 0,
+                "count": 0,
+                "dcStatus": "OLD",
+                "dcPocModels": [
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 43905,
+                            "phoneNumber": "+912020202424",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Executive",
+                            "name": "Pradeep Kumar",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    },
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 44027,
+                            "phoneNumber": "+912020203131",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Project Lead",
+                            "name": "Sachin Patil",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    },
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 48933,
+                            "phoneNumber": "+914527237270",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Supervisor",
+                            "name": "Supervisor Test",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    },
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 48965,
+                            "phoneNumber": "+914523523656",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Supervisor",
+                            "name": "Superviosr Six",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    },
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 48995,
+                            "phoneNumber": "+914336342660",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Supervisor",
+                            "name": "Supervisor Five",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    },
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 49053,
+                            "phoneNumber": "+914538447830",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Supervisor",
+                            "name": "Supervisor Test",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    },
+                    {
+                        "id": null,
+                        "deliveryCenterModel": null,
+                        "userModel": {
+                            "id": 49251,
+                            "phoneNumber": "+913030303000",
+                            "clientId": 0,
+                            "sessionExpire": 0,
+                            "refreshExpire": 0,
+                            "designation": "Supervisor",
+                            "name": "Test Sup",
+                            "validUserDetails": true,
+                            "selfSignup": false
+                        },
+                        "preference": null,
+                        "dcId": null,
+                        "userId": null
+                    }
+                ],
+                "osrmRegion": "INDIA",
+                "requiredDocuments": [
+                    {
+                        "id": 4,
+                        "deliveryCenterId": 51,
+                        "requiredDocumentId": 2,
+                        "requiredDocumentSubTypeId": null,
+                        "requiredDocumentName": "TMS MIS",
+                        "requiredDocumentSubTypeName": null,
+                        "applicableMonth": null,
+                        "fromDate": "2024-06-01",
+                        "toDate": "2025-03-31",
+                        "allowUploadLogSheet": true
+                    },
+                    {
+                        "id": 1199,
+                        "deliveryCenterId": 51,
+                        "requiredDocumentId": 5,
+                        "requiredDocumentSubTypeId": 4,
+                        "requiredDocumentName": "Client Verification Document",
+                        "requiredDocumentSubTypeName": "Logsheet",
+                        "applicableMonth": null,
+                        "fromDate": "2025-04-01",
+                        "toDate": null,
+                        "allowUploadLogSheet": true
+                    }
+                ],
+                "zoneId": 3,
+                "zoneName": "West Zone",
+                "isGpsCompulsory": false,
+                "permanentDc": false
+            }
+        ],
+        "registrationDate": "15/07/2026",
+        "status": "UNAPPROVED",
+        "upiPhoneNumber": "9331568670",
+        "statusToShow": "UNAPPROVED",
+        "userModel": {
+            "id": 49300,
+            "username": "+919817844556",
+            "email": "auto1784119366134@test.com",
+            "phoneNumber": "+919817844556",
+            "firstName": "AUTO_VENDOR_1784119366128",
+            "clientId": 0,
+            "sessionExpire": 0,
+            "refreshExpire": 0,
+            "validUserDetails": true,
+            "selfSignup": false
+        },
+        "vendorCode": 0,
+        "clientVendorPackageModels": [
+            
+        ],
+        "ownerPhoneNumber": "+919817844556",
+        "ownerEmailId": "auto1784119366134@test.com",
+        "serviceableArea": "Across City",
+        "comments": "Automation Testing",
+        "vehicleList": [
+            {
+                "id": 82,
+                "vehicleManufacturerModel": {
+                    "id": 15,
+                    "vehMfrName": "OORJAA",
+                    "vehMfrDescription": "OORJAA",
+                    "vehMfrCode": "OORJAA"
+                },
+                "carryingCapacity": 1500.0,
+                "containerType": "CLOSE",
+                "lengthOfContainer": 8.0,
+                "modelName": "Pickup",
+                "modelVariant": "Pickup",
+                "status": "ACTIVE",
+                "vehicleCount": 1
+            }
+        ],
+        "baseVehicleTypeList": [
+            {
+                "id": 53,
+                "axleTypeModel": {
+                    "id": 3,
+                    "axleTypeName": "4W",
+                    "axleTypeDesc": "4 Wheeler"
+                },
+                "weightModel": {
+                    "id": 23,
+                    "weight": "1.3T",
+                    "uom": "TON"
+                },
+                "fuelTypeModel": {
+                    "id": 3,
+                    "fuelTypeName": "DIESEL",
+                    "fuelTypeDesc": "Diesel"
+                },
+                "length": 8.0,
+                "width": 4.8,
+                "height": 4.8,
+                "volume": 184.32,
+                "range": 100,
+                "speed": 25,
+                "status": "ACTIVE",
+                "vehicleCode": "4W-1.3T-Diesel",
+                "shortBaseTypeVehicleCode": "4W-1.3T",
+                "vehicleCount": 1
+            }
+        ],
+        "totalVehicleModel": 1,
+        "totalVehicle": 1,
+        "cityId": "9c9a92aa-3c25-11ee-bd0f-0a9d1c57a228",
+        "countryId": "9c7ac8b9-3c25-11ee-bd0f-0a9d1c57a228",
+        "stateId": "9c855c48-3c25-11ee-bd0f-0a9d1c57a228",
+        "vendorType": "TRANSPORT_PARTNER",
+        "panDetails": null,
+        "bankVerificationStatus": "DOCUMENT_PENDING",
+        "isBankDetailsVerified": false,
+        "isPanVerified": false,
+        "isPanAadharLinked": false,
+        "isTdsApplicable": false,
+        "aadharNumber": "277930428177",
+        "percentageProfileCompletion": 0,
+        "documents": [
+            {
+                "id": 2051,
+                "documentCategory": "NATIONAL_ID",
+                "documentNumber": "277930428177",
+                "documentName": "Aadhaar Card",
+                "documentIssuer": null,
+                "countryCode": "IN",
+                "frontPhoto": null,
+                "backPhoto": null,
+                "additionalPhoto": null,
+                "issueDate": null,
+                "expiryDate": null,
+                "verificationStatus": "NOT_STARTED",
+                "verificationProvider": null,
+                "verificationReference": null,
+                "remarks": null,
+                "isActive": true,
+                "isDeleted": false,
+                "displayName": "Aadhaar Card",
+                "expired": false
+            },
+            {
+                "id": 2050,
+                "documentCategory": "PERSONAL_TAX",
+                "documentNumber": "XJNSA4563M",
+                "documentName": "Pan Card",
+                "documentIssuer": null,
+                "countryCode": "IN",
+                "frontPhoto": null,
+                "backPhoto": null,
+                "additionalPhoto": null,
+                "issueDate": null,
+                "expiryDate": null,
+                "verificationStatus": "NOT_STARTED",
+                "verificationProvider": null,
+                "verificationReference": null,
+                "remarks": null,
+                "isActive": true,
+                "isDeleted": false,
+                "displayName": "Pan Card",
+                "expired": false
+            }
+        ],
+        "bankDetails": [
+            
+        ]
+    }
+}

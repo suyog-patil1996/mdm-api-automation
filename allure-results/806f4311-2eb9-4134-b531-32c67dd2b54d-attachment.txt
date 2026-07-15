@@ -1,0 +1,18 @@
+=============== API VALIDATION ===============
+
+PASS
+Expected : 200
+Actual   : 200
+
+PASS
+Expected : OK
+Actual   : OK
+
+PASS
+Expected : 200
+Actual   : 200
+
+PASS
+Expected : Update vendor details successfully.
+Actual   : Update vendor details successfully.
+

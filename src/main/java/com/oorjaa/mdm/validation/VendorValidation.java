@@ -1,11 +1,12 @@
 package com.oorjaa.mdm.validation;
 
 import com.oorjaa.mdm.context.VendorContext;
+import com.oorjaa.mdm.model.vendor.VendorDetails;
 import com.oorjaa.mdm.repository.VendorRepository;
+import com.oorjaa.mdm.utils.AllureHelper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
-import com.oorjaa.mdm.model.vendor.VendorDetails;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -24,16 +25,47 @@ public class VendorValidation {
         this.vendorRepository = vendorRepository;
     }
 
+    private String pass(Object expected, Object actual) {
+
+        return String.format(
+                "PASS%nExpected : %s%nActual   : %s%n%n",
+                expected,
+                actual);
+    }
+
+    private String generated(Object value) {
+
+        return String.format(
+                "PASS%nExpected : Generated%nActual   : %s%n%n",
+                value);
+    }
+
     @Step("Validate Vendor Creation Response")
     public void validateVendorCreation(Response response) {
+
+        AllureHelper.addStep("Validate Create Vendor API Response");
+
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== API VALIDATION ===============\n\n");
+
+        validation.append(pass(
+                200,
+                response.getStatusCode()));
+
+        Integer vendorId =
+                response.jsonPath().getInt("data.id");
+
+        validation.append(generated(vendorId));
+
+        AllureHelper.attachValidationSummary(
+                "Create Vendor API Validation",
+                validation.toString());
 
         assertEquals(
                 response.getStatusCode(),
                 200,
                 "Vendor creation failed.");
-
-        Integer vendorId =
-                response.jsonPath().getInt("data.id");
 
         assertNotNull(
                 vendorId,
@@ -41,16 +73,54 @@ public class VendorValidation {
 
         vendorContext.setVendorId(vendorId);
 
+        AllureHelper.addStep(
+                "Validate Vendor Record In Database");
+
         validateVendorCreationInDatabase();
+    }
+    @Step("Validate Duplicate Vendor Response")
+    public void validateDuplicateVendor(Response response) {
+
+        AllureHelper.addStep("Validate Duplicate Vendor Response");
+
+        String message =
+                response.jsonPath().getString("message");
+
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== API VALIDATION ===============\n\n");
+
+        validation.append(pass(
+                500,
+                response.getStatusCode()));
+
+        validation.append(pass(
+                "Phone number is already exist.",
+                message));
+
+        AllureHelper.attachValidationSummary(
+                "Duplicate Vendor Validation",
+                validation.toString());
+
+        assertEquals(
+                response.getStatusCode(),
+                500,
+                "Duplicate vendor validation failed.");
+
+        assertNotNull(
+                message,
+                "Duplicate validation message is missing.");
+
+        assertEquals(
+                message,
+                "Phone number is already exist.",
+                "Duplicate validation message mismatch.");
     }
 
     @Step("Validate Vendor Approval Response")
     public void validateVendorApproval(Response response) {
 
-        assertEquals(
-                response.getStatusCode(),
-                200,
-                "Vendor approval failed.");
+        AllureHelper.addStep("Validate Vendor Approval Response");
 
         String status =
                 response.jsonPath().getString("status");
@@ -60,6 +130,35 @@ public class VendorValidation {
 
         String message =
                 response.jsonPath().getString("message");
+
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== API VALIDATION ===============\n\n");
+
+        validation.append(pass(
+                200,
+                response.getStatusCode()));
+
+        validation.append(pass(
+                "OK",
+                status));
+
+        validation.append(pass(
+                200,
+                statusCode));
+
+        validation.append(pass(
+                "Update vendor details successfully.",
+                message));
+
+        AllureHelper.attachValidationSummary(
+                "Approve Vendor API Validation",
+                validation.toString());
+
+        assertEquals(
+                response.getStatusCode(),
+                200,
+                "Vendor approval failed.");
 
         assertEquals(
                 status,
@@ -80,10 +179,7 @@ public class VendorValidation {
     @Step("Validate Vendor Search Response")
     public void validateVendorSearch(Response response) {
 
-        assertEquals(
-                response.getStatusCode(),
-                200,
-                "Vendor search failed.");
+        AllureHelper.addStep("Validate Vendor Search Response");
 
         String status =
                 response.jsonPath().getString("status");
@@ -108,6 +204,55 @@ public class VendorValidation {
 
         String phoneNumber =
                 response.jsonPath().getString("data.content[0].ownerPhoneNumber");
+
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== API VALIDATION ===============\n\n");
+
+        validation.append(pass(
+                200,
+                response.getStatusCode()));
+
+        validation.append(pass(
+                "OK",
+                status));
+
+        validation.append(pass(
+                200,
+                statusCode));
+
+        validation.append(pass(
+                "All Vendors Loaded Successfully",
+                message));
+
+        validation.append(pass(
+                1,
+                totalRecords));
+
+        validation.append(pass(
+                vendorContext.getVendorId(),
+                vendorId));
+
+        validation.append(pass(
+                vendorContext.getVendorName(),
+                vendorName));
+
+        validation.append(pass(
+                vendorContext.getOwnerName(),
+                ownerName));
+
+        validation.append(pass(
+                vendorContext.getPhoneNumber(),
+                phoneNumber));
+
+        AllureHelper.attachValidationSummary(
+                "Search Vendor API Validation",
+                validation.toString());
+
+        assertEquals(
+                response.getStatusCode(),
+                200,
+                "Vendor search failed.");
 
         assertEquals(
                 status,
@@ -149,14 +294,10 @@ public class VendorValidation {
                 vendorContext.getPhoneNumber(),
                 "Owner phone number mismatch.");
     }
-
     @Step("Validate Vendor Update Response")
     public void validateVendorUpdate(Response response) {
 
-        assertEquals(
-                response.getStatusCode(),
-                200,
-                "Vendor update failed.");
+        AllureHelper.addStep("Validate Vendor Update Response");
 
         String status =
                 response.jsonPath().getString("status");
@@ -166,6 +307,35 @@ public class VendorValidation {
 
         String message =
                 response.jsonPath().getString("message");
+
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== API VALIDATION ===============\n\n");
+
+        validation.append(pass(
+                200,
+                response.getStatusCode()));
+
+        validation.append(pass(
+                "OK",
+                status));
+
+        validation.append(pass(
+                200,
+                statusCode));
+
+        validation.append(pass(
+                "Update vendor details successfully.",
+                message));
+
+        AllureHelper.attachValidationSummary(
+                "Update Vendor API Validation",
+                validation.toString());
+
+        assertEquals(
+                response.getStatusCode(),
+                200,
+                "Vendor update failed.");
 
         assertEquals(
                 status,
@@ -182,30 +352,12 @@ public class VendorValidation {
                 "Update vendor details successfully.",
                 "Update message mismatch.");
 
+        AllureHelper.addStep(
+                "Validate Updated Vendor Record In Database");
+
         validateVendorUpdateInDatabase();
     }
 
-
-    @Step("Validate Duplicate Vendor Response")
-    public void validateDuplicateVendor(Response response) {
-
-        assertEquals(
-                response.getStatusCode(),
-                500,
-                "Duplicate vendor validation failed.");
-
-        String message =
-                response.jsonPath().getString("message");
-
-        assertNotNull(
-                message,
-                "Duplicate validation message is missing.");
-
-        assertEquals(
-                message,
-                "Phone number is already exist.",
-                "Duplicate validation message mismatch.");
-    }
     @Step("Validate Vendor Creation In Database")
     private void validateVendorCreationInDatabase() {
 
@@ -217,68 +369,79 @@ public class VendorValidation {
                 vendorDetails,
                 "Vendor record not found in database.");
 
-        assertEquals(
-                vendorDetails.getNameOfCompany(),
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== DATABASE VALIDATION ===============\n\n");
+
+        validation.append(pass(
                 vendorContext.getVendorName(),
-                "Vendor name mismatch.");
+                vendorDetails.getNameOfCompany()));
 
-        assertEquals(
-                vendorDetails.getOwnerName(),
+        validation.append(pass(
                 vendorContext.getOwnerName(),
-                "Owner name mismatch.");
+                vendorDetails.getOwnerName()));
 
-        assertEquals(
-                vendorDetails.getOwnerPhoneNumber(),
+        validation.append(pass(
                 "+91" + vendorContext.getPhoneNumber(),
-                "Owner phone number mismatch.");
+                vendorDetails.getOwnerPhoneNumber()));
 
-        assertEquals(
-                vendorDetails.getAddress1(),
+        validation.append(pass(
                 vendorContext.getAddress1(),
-                "Address mismatch.");
+                vendorDetails.getAddress1()));
 
-        assertEquals(
-                vendorDetails.getCity(),
+        validation.append(pass(
                 vendorContext.getCity(),
-                "City mismatch.");
+                vendorDetails.getCity()));
 
-        assertEquals(
-                vendorDetails.getCountry(),
+        validation.append(pass(
                 vendorContext.getCountry(),
-                "Country mismatch.");
+                vendorDetails.getCountry()));
 
-        assertEquals(
-                vendorDetails.getZipCode(),
+        validation.append(pass(
                 vendorContext.getZipCode(),
-                "Zip Code mismatch.");
+                vendorDetails.getZipCode()));
 
-        assertEquals(
-                vendorDetails.getRegisteredUnder(),
+        validation.append(pass(
                 vendorContext.getRegisteredUnder(),
-                "Registered Under mismatch.");
+                vendorDetails.getRegisteredUnder()));
 
-        assertEquals(
-                vendorDetails.getServiceableArea(),
+        validation.append(pass(
                 vendorContext.getServiceableArea(),
-                "Serviceable Area mismatch.");
+                vendorDetails.getServiceableArea()));
 
-        assertEquals(
-                vendorDetails.getComments(),
+        validation.append(pass(
                 vendorContext.getComments(),
-                "Comments mismatch.");
+                vendorDetails.getComments()));
 
-        assertNotNull(
-                vendorDetails.getVendorCode(),
-                "Vendor Code was not generated.");
+        validation.append(generated(
+                vendorDetails.getVendorCode()));
 
-        assertNotNull(
-                vendorDetails.getUserId(),
-                "User Id was not generated.");
+        validation.append(generated(
+                vendorDetails.getUserId()));
 
-        assertNotNull(
-                vendorDetails.getDeliveryCenterId(),
-                "Delivery Center was not created.");
+        validation.append(generated(
+                vendorDetails.getDeliveryCenterId()));
+
+        AllureHelper.attachValidationSummary(
+                "Create Vendor Database Validation",
+                validation.toString());
+
+        assertEquals(vendorDetails.getNameOfCompany(), vendorContext.getVendorName());
+        assertEquals(vendorDetails.getOwnerName(), vendorContext.getOwnerName());
+        assertEquals(vendorDetails.getOwnerPhoneNumber(), "+91" + vendorContext.getPhoneNumber());
+        assertEquals(vendorDetails.getAddress1(), vendorContext.getAddress1());
+        assertEquals(vendorDetails.getCity(), vendorContext.getCity());
+        assertEquals(vendorDetails.getCountry(), vendorContext.getCountry());
+        assertEquals(vendorDetails.getZipCode(), vendorContext.getZipCode());
+        assertEquals(vendorDetails.getRegisteredUnder(), vendorContext.getRegisteredUnder());
+        assertEquals(vendorDetails.getServiceableArea(), vendorContext.getServiceableArea());
+        assertEquals(vendorDetails.getComments(), vendorContext.getComments());
+
+        assertNotNull(vendorDetails.getVendorCode());
+        assertNotNull(vendorDetails.getUserId());
+        assertNotNull(vendorDetails.getDeliveryCenterId());
     }
+
     @Step("Validate Vendor Update In Database")
     private void validateVendorUpdateInDatabase() {
 
@@ -290,66 +453,77 @@ public class VendorValidation {
                 vendorDetails,
                 "Vendor record not found in database.");
 
-        assertEquals(
-                vendorDetails.getNameOfCompany(),
+        StringBuilder validation = new StringBuilder();
+
+        validation.append("=============== DATABASE VALIDATION ===============\n\n");
+
+        validation.append(pass(
                 vendorContext.getUpdatedVendorName(),
-                "Updated vendor name mismatch.");
+                vendorDetails.getNameOfCompany()));
 
-        assertEquals(
-                vendorDetails.getOwnerName(),
+        validation.append(pass(
                 vendorContext.getUpdatedOwnerName(),
-                "Updated owner name mismatch.");
+                vendorDetails.getOwnerName()));
 
-        assertEquals(
-                vendorDetails.getOwnerPhoneNumber(),
+        validation.append(pass(
                 vendorContext.getUpdatedPhoneNumber(),
-                "Updated phone number mismatch.");
+                vendorDetails.getOwnerPhoneNumber()));
 
-        assertEquals(
-                vendorDetails.getAddress1(),
+        validation.append(pass(
                 vendorContext.getUpdatedAddress1(),
-                "Updated address mismatch.");
+                vendorDetails.getAddress1()));
 
-        assertEquals(
-                vendorDetails.getCity(),
+        validation.append(pass(
                 vendorContext.getUpdatedCity(),
-                "Updated city mismatch.");
+                vendorDetails.getCity()));
 
-        assertEquals(
-                vendorDetails.getCountry(),
+        validation.append(pass(
                 vendorContext.getUpdatedCountry(),
-                "Updated country mismatch.");
+                vendorDetails.getCountry()));
 
-        assertEquals(
-                vendorDetails.getZipCode(),
+        validation.append(pass(
                 vendorContext.getUpdatedZipCode(),
-                "Updated zip code mismatch.");
+                vendorDetails.getZipCode()));
 
-        assertEquals(
-                vendorDetails.getRegisteredUnder(),
+        validation.append(pass(
                 vendorContext.getUpdatedRegisteredUnder(),
-                "Updated registered under mismatch.");
+                vendorDetails.getRegisteredUnder()));
 
-        assertEquals(
-                vendorDetails.getServiceableArea(),
+        validation.append(pass(
                 vendorContext.getUpdatedServiceableArea(),
-                "Updated serviceable area mismatch.");
+                vendorDetails.getServiceableArea()));
 
-        assertEquals(
-                vendorDetails.getComments(),
+        validation.append(pass(
                 vendorContext.getUpdatedComments(),
-                "Updated comments mismatch.");
+                vendorDetails.getComments()));
 
-        assertNotNull(
-                vendorDetails.getVendorCode(),
-                "Vendor code should not be null.");
+        validation.append(generated(
+                vendorDetails.getVendorCode()));
 
-        assertNotNull(
-                vendorDetails.getUserId(),
-                "User Id should not be null.");
+        validation.append(generated(
+                vendorDetails.getUserId()));
 
-        assertNotNull(
-                vendorDetails.getDeliveryCenterId(),
-                "Delivery Center should not be null.");
+        validation.append(generated(
+                vendorDetails.getDeliveryCenterId()));
+
+        AllureHelper.attachValidationSummary(
+                "Update Vendor Database Validation",
+                validation.toString());
+
+        assertEquals(vendorDetails.getNameOfCompany(), vendorContext.getUpdatedVendorName());
+        assertEquals(vendorDetails.getOwnerName(), vendorContext.getUpdatedOwnerName());
+        assertEquals(vendorDetails.getOwnerPhoneNumber(), vendorContext.getUpdatedPhoneNumber());
+        assertEquals(vendorDetails.getAddress1(), vendorContext.getUpdatedAddress1());
+        assertEquals(vendorDetails.getCity(), vendorContext.getUpdatedCity());
+        assertEquals(vendorDetails.getCountry(), vendorContext.getUpdatedCountry());
+        assertEquals(vendorDetails.getZipCode(), vendorContext.getUpdatedZipCode());
+        assertEquals(vendorDetails.getRegisteredUnder(), vendorContext.getUpdatedRegisteredUnder());
+        assertEquals(vendorDetails.getServiceableArea(), vendorContext.getUpdatedServiceableArea());
+        assertEquals(vendorDetails.getComments(), vendorContext.getUpdatedComments());
+
+        assertNotNull(vendorDetails.getVendorCode());
+        assertNotNull(vendorDetails.getUserId());
+        assertNotNull(vendorDetails.getDeliveryCenterId());
     }
+
 }

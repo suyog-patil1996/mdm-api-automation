@@ -1,0 +1,83 @@
+{
+    "status": "OK",
+    "statusCode": 200,
+    "message": "All Vendors Loaded Successfully",
+    "totalPages": 1,
+    "totalRecords": 1,
+    "isLast": true,
+    "data": {
+        "content": [
+            {
+                "id": 2818,
+                "uniqueCode": "VE00022",
+                "nameOfCompany": "AUTO_VENDOR_1784119366128",
+                "city": "Pune",
+                "state": "Maharashtra",
+                "ownerName": "Automation User 1688",
+                "email": "auto1784119370782@test.com",
+                "noOfVehicle": 0,
+                "dcModelList": [
+                    {
+                        "id": 51,
+                        "deliveryCentreName": "DC-Baner-Demo",
+                        "deliveryCenterName": "DC-Baner-Demo",
+                        "city": "Pune",
+                        "cityId": "9c9a92aa-3c25-11ee-bd0f-0a9d1c57a228",
+                        "state": "Maharashtra",
+                        "dcTotalCapacity": 0.0,
+                        "dcColdCapacity": 0.0,
+                        "dcDryCapacity": 0.0,
+                        "dcFrozenCapacity": 0.0,
+                        "clientId": 5,
+                        "clientProjectId": 14,
+                        "stateId": "9c855c48-3c25-11ee-bd0f-0a9d1c57a228",
+                        "tripCount": 0,
+                        "count": 0,
+                        "clientName": "Demo Client",
+                        "clientProjectName": "Demo-project",
+                        "permanentDc": false
+                    }
+                ],
+                "registrationDate": "15/07/2026",
+                "status": "ACTIVE",
+                "statusToShow": "ACTIVE",
+                "vendorCode": 0,
+                "ownerPhoneNumber": "9817844556",
+                "vendorType": "TRANSPORT_PARTNER",
+                "bankVerificationStatus": "DOCUMENT_PENDING",
+                "isBankDetailsVerified": false,
+                "isPanVerified": false,
+                "isTdsApplicable": false,
+                "percentageProfileCompletion": 0,
+                "vpaUserAgreementModels": [
+                    
+                ]
+            }
+        ],
+        "pageable": {
+            "pageNumber": 0,
+            "pageSize": 10,
+            "sort": {
+                "sorted": false,
+                "empty": true,
+                "unsorted": true
+            },
+            "offset": 0,
+            "paged": true,
+            "unpaged": false
+        },
+        "totalPages": 1,
+        "totalElements": 1,
+        "last": true,
+        "size": 10,
+        "number": 0,
+        "sort": {
+            "sorted": false,
+            "empty": true,
+            "unsorted": true
+        },
+        "numberOfElements": 1,
+        "first": true,
+        "empty": false
+    }
+}

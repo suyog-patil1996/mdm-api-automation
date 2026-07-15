@@ -1,0 +1,15 @@
+{
+  "limit" : 10,
+  "pageId" : 0,
+  "sortOrder" : "desc",
+  "sortField" : "id",
+  "stateId" : null,
+  "cityId" : null,
+  "dcId" : null,
+  "bankVerificationStatus" : null,
+  "modelId" : null,
+  "vendorType" : null,
+  "status" : null,
+  "searchText" : "9817844556",
+  "userStatuses" : [ "NEW", "DEACTIVATE", "ACTIVE", "IN_PROGRESS", "DELETE", "BANNED", "CHECKINTODC" ]
+}

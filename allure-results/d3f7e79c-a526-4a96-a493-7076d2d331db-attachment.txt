@@ -1,0 +1,54 @@
+=============== DATABASE VALIDATION ===============
+
+PASS
+Expected : AUTO_VENDOR_1784119366128
+Actual   : AUTO_VENDOR_1784119366128
+
+PASS
+Expected : Automation User 1688
+Actual   : Automation User 1688
+
+PASS
+Expected : +919817844556
+Actual   : +919817844556
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : India
+Actual   : India
+
+PASS
+Expected : 411045
+Actual   : 411045
+
+PASS
+Expected : PROPRIETORY
+Actual   : PROPRIETORY
+
+PASS
+Expected : Across City
+Actual   : Across City
+
+PASS
+Expected : Automation Testing
+Actual   : Automation Testing
+
+PASS
+Expected : Generated
+Actual   : VE00022
+
+PASS
+Expected : Generated
+Actual   : 49300
+
+PASS
+Expected : Generated
+Actual   : 51
+
