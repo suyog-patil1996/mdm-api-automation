@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+
+}
+
+group = 'com.oorjaa'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+
+    implementation 'org.springframework:spring-context:6.2.0'
+
+    implementation 'io.rest-assured:rest-assured:5.5.1'
+    implementation 'io.rest-assured:json-path:5.5.1'
+    implementation 'io.rest-assured:xml-path:5.5.1'
+
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.1'
+
+    implementation 'com.mysql:mysql-connector-j:9.3.0'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
+
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+    implementation 'org.assertj:assertj-core:3.27.3'
+
+    testImplementation 'org.testng:testng:7.11.0'
+    implementation 'org.testng:testng:7.11.0'
+    implementation 'io.qameta.allure:allure-testng:2.35.1'
+    testImplementation 'io.qameta.allure:allure-testng:2.35.1'
+    implementation 'io.qameta.allure:allure-rest-assured:2.35.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.38'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.38'
+}
+
+test {
+    useTestNG() {
+        listeners << "io.qameta.allure.testng.AllureTestNg"
+    }
+
+    systemProperty "allure.results.directory", "allure-results"
+
+    testLogging {
+        events "passed", "failed", "skipped"
+    }
+}
+

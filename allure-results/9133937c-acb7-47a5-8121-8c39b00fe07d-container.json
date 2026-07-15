@@ -1,0 +1,1 @@
+{"uuid":"9133937c-acb7-47a5-8121-8c39b00fe07d","name":"com.oorjaa.mdm.tests.base.RestAssuredConfigTest","children":["5e14ef6f-2852-4b02-96ec-58e9cb62fb7f"],"befores":[{"name":"login","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1784019648146,"stop":1784019648750}],"afters":[],"start":1784019644511,"stop":1784019656985}

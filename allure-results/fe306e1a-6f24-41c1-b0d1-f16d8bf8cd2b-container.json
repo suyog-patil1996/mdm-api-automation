@@ -1,0 +1,1 @@
+{"uuid":"fe306e1a-6f24-41c1-b0d1-f16d8bf8cd2b","name":"com.oorjaa.mdm.tests.base.LoginTest","children":["07de6302-bb6c-4bd1-8cf3-fd976e56fc40"],"befores":[{"name":"login","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1784014906958,"stop":1784014909055}],"afters":[],"start":1784014906944,"stop":1784014925261}
