@@ -1,0 +1,10 @@
+=============== API VALIDATION ===============
+
+PASS
+Expected : 500
+Actual   : 500
+
+PASS
+Expected : Phone number is already exist.
+Actual   : Phone number is already exist.
+

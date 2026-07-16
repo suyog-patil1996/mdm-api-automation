@@ -1,0 +1,6 @@
+Framework : MDM API Automation
+Execution Time : 16-Jul-2026 04:48:08 pm
+Java Version : 17.0.17
+Operating System : Windows 11
+OS Version : 10.0
+User : User

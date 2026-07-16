@@ -1,0 +1,54 @@
+=============== DATABASE VALIDATION ===============
+
+PASS
+Expected : Updated_AUTO_VENDOR_1784200690990
+Actual   : Updated_AUTO_VENDOR_1784200690990
+
+PASS
+Expected : Updated Owner
+Actual   : Updated Owner
+
+PASS
+Expected : 9336878513
+Actual   : 9336878513
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : India
+Actual   : India
+
+PASS
+Expected : 411045
+Actual   : 411045
+
+PASS
+Expected : PARTNERSHIP
+Actual   : PARTNERSHIP
+
+PASS
+Expected : Across City
+Actual   : Across City
+
+PASS
+Expected : Updated By Automation
+Actual   : Updated By Automation
+
+PASS
+Expected : Generated
+Actual   : VE00024
+
+PASS
+Expected : Generated
+Actual   : 49303
+
+PASS
+Expected : Generated
+Actual   : 51
+

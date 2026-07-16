@@ -25,50 +25,46 @@ public class BaseTest {
 
         ApplicationContextProvider.setContext(context);
 
-        attachExecutionInformation();
-    }
-
-    @BeforeClass(alwaysRun = true)
-    public void login() {
-
         LoginService loginService =
                 context.getBean(LoginService.class);
 
         loginService.login();
     }
 
-    private void attachExecutionInformation() {
 
-        StringBuilder builder =
-                new StringBuilder();
 
-        builder.append("Framework : ")
-                .append("MDM API Automation")
-                .append(System.lineSeparator());
-
-        builder.append("Execution Time : ")
-                .append(LocalDateTime.now()
-                        .format(DateTimeFormatter.ofPattern(
-                                "dd-MMM-yyyy hh:mm:ss a")))
-                .append(System.lineSeparator());
-
-        builder.append("Java Version : ")
-                .append(System.getProperty("java.version"))
-                .append(System.lineSeparator());
-
-        builder.append("Operating System : ")
-                .append(System.getProperty("os.name"))
-                .append(System.lineSeparator());
-
-        builder.append("OS Version : ")
-                .append(System.getProperty("os.version"))
-                .append(System.lineSeparator());
-
-        builder.append("User : ")
-                .append(System.getProperty("user.name"));
-
-        AllureHelper.attachBusinessData(
-                "Execution Information",
-                builder.toString());
-    }
+//    private void attachExecutionInformation() {
+//
+//        StringBuilder builder =
+//                new StringBuilder();
+//
+//        builder.append("Framework : ")
+//                .append("MDM API Automation")
+//                .append(System.lineSeparator());
+//
+//        builder.append("Execution Time : ")
+//                .append(LocalDateTime.now()
+//                        .format(DateTimeFormatter.ofPattern(
+//                                "dd-MMM-yyyy hh:mm:ss a")))
+//                .append(System.lineSeparator());
+//
+//        builder.append("Java Version : ")
+//                .append(System.getProperty("java.version"))
+//                .append(System.lineSeparator());
+//
+//        builder.append("Operating System : ")
+//                .append(System.getProperty("os.name"))
+//                .append(System.lineSeparator());
+//
+//        builder.append("OS Version : ")
+//                .append(System.getProperty("os.version"))
+//                .append(System.lineSeparator());
+//
+//        builder.append("User : ")
+//                .append(System.getProperty("user.name"));
+//
+//        AllureHelper.attachBusinessData(
+//                "Execution Information",
+//                builder.toString());
+//    }
 }
