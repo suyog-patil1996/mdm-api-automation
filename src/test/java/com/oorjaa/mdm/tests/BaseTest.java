@@ -1,4 +1,4 @@
-package com.oorjaa.mdm.tests.base;
+package com.oorjaa.mdm.tests;
 
 import com.oorjaa.mdm.config.ApplicationContextProvider;
 import com.oorjaa.mdm.config.SpringConfig;
