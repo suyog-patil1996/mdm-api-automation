@@ -1,0 +1,38 @@
+=============== API VALIDATION ===============
+
+PASS
+Expected : 200
+Actual   : 200
+
+PASS
+Expected : OK
+Actual   : OK
+
+PASS
+Expected : 200
+Actual   : 200
+
+PASS
+Expected : All Vendors Loaded Successfully
+Actual   : All Vendors Loaded Successfully
+
+PASS
+Expected : 1
+Actual   : 1
+
+PASS
+Expected : 2905
+Actual   : 2905
+
+PASS
+Expected : AUTO_VENDOR_1791277310613
+Actual   : AUTO_VENDOR_1791277310613
+
+PASS
+Expected : Automation User 6796
+Actual   : Automation User 6796
+
+PASS
+Expected : 9800825478
+Actual   : 9800825478
+

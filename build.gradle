@@ -56,5 +56,6 @@ test {
     testLogging {
         events "passed", "failed", "skipped"
     }
+
 }
 

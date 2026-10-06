@@ -91,7 +91,7 @@ public class VendorValidation {
         validation.append("=============== API VALIDATION ===============\n\n");
 
         validation.append(pass(
-                500,
+                400,
                 response.getStatusCode()));
 
         validation.append(pass(
@@ -104,7 +104,7 @@ public class VendorValidation {
 
         assertEquals(
                 response.getStatusCode(),
-                500,
+                400,
                 "Duplicate vendor validation failed.");
 
         assertNotNull(
