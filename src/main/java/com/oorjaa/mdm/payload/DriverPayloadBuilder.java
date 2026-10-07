@@ -67,11 +67,41 @@ public class DriverPayloadBuilder {
     }
 
     public CreateDriverRequest buildDuplicateDriverRequest() {
-        CreateDriverRequest base = buildCreateDriverRequest();
-        // force same phone + license as already created
-        base.setPhoneNumber(driverContext.getPhoneNumber());
-        base.setDrivingLicense(driverContext.getDrivingLicense());
-        return base;
+
+        // Do NOT call buildCreateDriverRequest() — that overwrites DriverContext
+        return CreateDriverRequest.builder()
+                .id(null)
+                .vendorId(driverContext.getVendorId())
+                .vehicleId(null)
+                .deliveryCenterId(null)
+                .drivingLicense(driverContext.getDrivingLicense())
+                .dateOfBirth(null)
+                .firstName(driverContext.getFirstName())
+                .middleName(null)
+                .lastName(driverContext.getLastName() != null
+                        ? driverContext.getLastName() : "")
+                .phoneNumber(driverContext.getPhoneNumber())
+                .alternatePhoneNumber(null)
+                .vehicleClasses(Collections.emptyList())
+                .countryId(DriverConstants.COUNTRY_ID)
+                .stateId(DriverConstants.STATE_ID)
+                .cityId(DriverConstants.CITY_ID)
+                .country(DriverConstants.COUNTRY)
+                .state(DriverConstants.STATE)
+                .city(DriverConstants.CITY)
+                .address1(driverContext.getAddress1())
+                .address2(null)
+                .address3(null)
+                .isLicenceVerified(false)
+                .documents(buildDocuments(
+                        driverContext.getDrivingLicense(),
+                        "AABCG1234D",
+                        "134145561788"))
+                .vehicleRegistrationNumber(null)
+                .isVehicleAssigned(false)
+                .permanentDeliveryCenterId(null)
+                .dcAssigned(false)
+                .build();
     }
 
     public ApproveDriverRequest buildApproveDriverRequest() {

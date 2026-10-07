@@ -35,11 +35,18 @@ public class DriverRepository {
               AND d.id = ?
             """;
 
+    private final DBConnection dbConnection;
+
+    public DriverRepository(DBConnection dbConnection) {
+        this.dbConnection = dbConnection;
+    }
+
     public DriverDetails getDriverDetails(Integer driverId) {
 
-        AllureHelper.attachSQL(GET_DRIVER_BY_ID + "  [" + driverId + "]");
+        AllureHelper.addStep("Fetch Driver Details From Database");
+        AllureHelper.attachSQL(GET_DRIVER_BY_ID + "  [driverId=" + driverId + "]");
 
-        try (Connection connection = DBConnection.getConnection();
+        try (Connection connection = dbConnection.getConnection();
              PreparedStatement ps = connection.prepareStatement(GET_DRIVER_BY_ID)) {
 
             ps.setInt(1, driverId);
@@ -60,18 +67,18 @@ public class DriverRepository {
                 details.setDriverId(rs.getInt("driver_id"));
                 details.setState(rs.getString("state"));
                 details.setCity(rs.getString("city"));
-                details.setCreatedBy(rs.getObject("created_by") != null
-                        ? rs.getInt("created_by") : null);
+                details.setCreatedBy(
+                        rs.getObject("created_by") != null ? rs.getInt("created_by") : null);
                 details.setCreatedDate(rs.getString("created_date"));
-                details.setUpdatedBy(rs.getObject("updated_by") != null
-                        ? rs.getInt("updated_by") : null);
+                details.setUpdatedBy(
+                        rs.getObject("updated_by") != null ? rs.getInt("updated_by") : null);
                 details.setUpdatedDate(rs.getString("updated_date"));
                 details.setAddress1(rs.getString("address1"));
-                details.setVendorId(rs.getObject("vendor_id") != null
-                        ? rs.getInt("vendor_id") : null);
+                details.setVendorId(
+                        rs.getObject("vendor_id") != null ? rs.getInt("vendor_id") : null);
 
                 AllureHelper.attachDatabaseResult(
-                        "Driver DB Row",
+                        "Driver Database Record",
                         details.toString());
 
                 return details;
