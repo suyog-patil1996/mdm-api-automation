@@ -17,4 +17,17 @@ public final class ApiEndpoints {
     public static final String SEARCH_VENDOR =
             "/api/vendors/search";
 
+
+    // Driver
+    public static final String CREATE_DRIVER =
+            "/api/addDriverDetails/v2";
+
+    public static final String APPROVE_DRIVER =
+            "/api/drivers/driver/status";
+
+    public static final String SEARCH_DRIVER =
+            "/api/getDriverDetails";
+
+    public static final String UPDATE_DRIVER =
+            "/api/updateDriverDetails/v2";
 }
