@@ -1,0 +1,23 @@
+SELECT
+    d.id AS driver_id,
+    d.address1,
+    d.city,
+    d.country,
+    d.user_status,
+    d.user_id,
+    d.vendor_id,
+    d.state,
+    d.created_by,
+    d.created_date,
+    d.updated_by,
+    d.updated_date,
+    u.id AS user_table_id,
+    u.first_name,
+    u.phone_number,
+    u.keycloak_user_id,
+    u.keycloak_username
+FROM lkart.user u
+INNER JOIN lkart.driver d ON u.id = d.user_id
+WHERE d.tenant_id = 1
+  AND d.id = ?
+ [driverId=10230]

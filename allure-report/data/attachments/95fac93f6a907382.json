@@ -1,0 +1,94 @@
+{
+  "id" : 2914,
+  "nameOfCompany" : "AUTO_VENDOR_1791462425630",
+  "registeredUnder" : "PROPRIETORY",
+  "address1" : "Pune",
+  "address2" : null,
+  "landmark" : null,
+  "cityId" : "9c9a92aa-3c25-11ee-bd0f-0a9d1c57a228",
+  "countryId" : "9c7ac8b9-3c25-11ee-bd0f-0a9d1c57a228",
+  "stateId" : "9c855c48-3c25-11ee-bd0f-0a9d1c57a228",
+  "country" : "India",
+  "state" : "Maharashtra",
+  "city" : "Pune",
+  "zipCode" : "411045",
+  "vendorType" : "TRANSPORT_PARTNER",
+  "vendorOperationalDate" : null,
+  "commercialId" : null,
+  "smeRegistrationNumber" : null,
+  "ownerName" : "Automation User 2804",
+  "ownerPhoneNumber" : "+919636070903",
+  "ownerEmailId" : "auto1791462429430@test.com",
+  "operationPointOfContact" : null,
+  "operationEmailId" : null,
+  "financePointOfContact" : null,
+  "financeEmailId" : null,
+  "dcModelList" : [ {
+    "id" : 51
+  } ],
+  "serviceableArea" : "Across City",
+  "comments" : "Automation Testing",
+  "vehicleList" : [ {
+    "id" : 82,
+    "vehicleCount" : "1"
+  } ],
+  "status" : "ACTIVE",
+  "panCard" : "VOLHO8276P",
+  "upiPhoneNumber" : "9347307419",
+  "aadharNumber" : "670589882112",
+  "isTdsApplicable" : false,
+  "tdsPercentage" : null,
+  "isPanVerified" : false,
+  "isBankDetailsVerified" : false,
+  "isPanAadharLinked" : false,
+  "vendorGstDetails" : [ {
+    "id" : null,
+    "gstNumber" : "22AAAAA7647A1Z3",
+    "stateId" : "9c8571d2-3c25-11ee-bd0f-0a9d1c57a228",
+    "state" : "Assam",
+    "address" : null,
+    "isGstInVerified" : false,
+    "gstPercentage" : 5.0,
+    "isReverseChargeApplicable" : false,
+    "gstInDetails" : null,
+    "primary" : false,
+    "verified" : false
+  } ],
+  "documents" : [ {
+    "documentCategory" : "BUSINESS_REG",
+    "documentNumber" : "UDYAM-MH-69737",
+    "countryCode" : "IN",
+    "documentName" : "msmeNumber"
+  }, {
+    "documentCategory" : "PERSONAL_TAX",
+    "documentNumber" : "VOLHO8276P",
+    "countryCode" : "IN",
+    "documentName" : "panNumber"
+  }, {
+    "documentCategory" : "CANCELLED_CHEQUE",
+    "documentNumber" : null,
+    "countryCode" : "IN",
+    "documentName" : "cancelledCheque"
+  }, {
+    "documentCategory" : "TAX_ID",
+    "documentNumber" : "22AAAAA7647A1Z3",
+    "countryCode" : "IN",
+    "documentName" : "gstNumber"
+  }, {
+    "documentCategory" : "NATIONAL_ID",
+    "documentNumber" : "670589882112",
+    "countryCode" : "IN",
+    "documentName" : "aadharCardNumber"
+  } ],
+  "bankDetails" : [ {
+    "id" : null,
+    "accountHolderName" : "Automation User 2804",
+    "accountNumber" : "31462429428",
+    "bankName" : "State Bank of India",
+    "branchName" : "ADARSH COLONY",
+    "accountType" : "SAVINGS",
+    "routingCode" : "SBIN0001932",
+    "isVerified" : false
+  } ],
+  "requestType" : "APPROVAL_PAGE"
+}

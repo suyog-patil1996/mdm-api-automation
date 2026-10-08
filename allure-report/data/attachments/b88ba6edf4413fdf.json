@@ -1,0 +1,196 @@
+{
+    "status": "OK",
+    "statusCode": 200,
+    "message": "Driver Registered succesfully.. !",
+    "data": {
+        "id": 10229,
+        "address1": "Pune",
+        "address2": "Baner",
+        "address3": "Baner gaon",
+        "city": "Pune",
+        "state": "Maharashtra",
+        "country": "India",
+        "drivingLicense": "MH12ETW291788",
+        "policeVerification": false,
+        "vendorId": 1117,
+        "userStatus": "UNAPPROVED",
+        "userModel": {
+            "id": 49918,
+            "phoneNumber": "+919996289659",
+            "firstName": "AUTO_DRV",
+            "lastName": "",
+            "clientId": 0,
+            "sessionExpire": 0,
+            "refreshExpire": 0,
+            "alternatePhoneNumber": "1749687347",
+            "createCashierWallet": false,
+            "name": "AUTO_DRV ",
+            "validUserDetails": true,
+            "selfSignup": false
+        },
+        "vendorModel": {
+            "id": 1117,
+            "nameOfCompany": "Suyog Transport ",
+            "vendorCode": 0,
+            "multiDeviceLoginEnabled": false,
+            "percentageProfileCompletion": 0
+        },
+        "drivingLicenseExpDate": "",
+        "panCardFrontImage": {
+            "id": 1416749,
+            "contentLength": 17373,
+            "contentType": "image/jpeg",
+            "fileName": "pan_front.jpg",
+            "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/DRIVER/10229/docs/pancard/1791461405236-pan_front.jpg"
+        },
+        "adharCardFrontImage": {
+            "id": 1416750,
+            "contentLength": 7731,
+            "contentType": "image/jpeg",
+            "fileName": "aadhaar_front.jpg",
+            "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/DRIVER/10229/docs/aadhaar/1791461405302-aadhaar_front.jpg"
+        },
+        "drivingLicenceFrontImage": {
+            "id": 1416752,
+            "contentLength": 5992,
+            "contentType": "image/jpeg",
+            "fileName": "DRIVING_LICENSE_FRONT.jpg",
+            "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/DRIVER/10229/docs/drivingLicense/1791461405364-DRIVING_LICENSE_FRONT.jpg"
+        },
+        "adharCardBackImage": {
+            "id": 1416751,
+            "contentLength": 8429,
+            "contentType": "image/jpeg",
+            "fileName": "aadhaar_back.jpg",
+            "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/DRIVER/10229/docs/aadhaar/1791461405335-aadhaar_back.jpg"
+        },
+        "drivingLicenceBackImage": {
+            "id": 1416753,
+            "contentLength": 5691,
+            "contentType": "image/jpeg",
+            "fileName": "DRIVING_LICENSE_BACK.jpg",
+            "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/DRIVER/10229/docs/drivingLicense/1791461405397-DRIVING_LICENSE_BACK.jpg"
+        },
+        "isLicenceVerified": false,
+        "isVehicleAssigned": false,
+        "createdDate": "2026-10-08T12:10:05.227+00:00",
+        "documents": [
+            {
+                "id": 67194,
+                "documentCategory": "POLICE_VERIFICATION",
+                "documentNumber": null,
+                "documentName": "policeVerification",
+                "documentIssuer": null,
+                "countryCode": "IN",
+                "frontPhoto": null,
+                "backPhoto": null,
+                "additionalPhoto": null,
+                "issueDate": null,
+                "expiryDate": null,
+                "verificationStatus": "NOT_STARTED",
+                "verificationProvider": null,
+                "verificationReference": null,
+                "remarks": null,
+                "isActive": true,
+                "isDeleted": false,
+                "displayName": "policeVerification",
+                "expired": false
+            },
+            {
+                "id": 67193,
+                "documentCategory": "NATIONAL_ID",
+                "documentNumber": "438308557872",
+                "documentName": "aadhaarCardNumber",
+                "documentIssuer": null,
+                "countryCode": "IN",
+                "frontPhoto": {
+                    "id": 1416757,
+                    "contentLength": 7731,
+                    "contentType": "image/jpeg",
+                    "fileName": "aadhaar_front.jpg",
+                    "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/Driver/10229/docs/NATIONAL_IDaadhaarcardnumber/1791461406017-front-aadhaar_front.jpg"
+                },
+                "backPhoto": {
+                    "id": 1416758,
+                    "contentLength": 8429,
+                    "contentType": "image/jpeg",
+                    "fileName": "aadhaar_back.jpg",
+                    "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/Driver/10229/docs/NATIONAL_IDaadhaarcardnumber/1791461406048-back-aadhaar_back.jpg"
+                },
+                "additionalPhoto": null,
+                "issueDate": null,
+                "expiryDate": null,
+                "verificationStatus": null,
+                "verificationProvider": null,
+                "verificationReference": null,
+                "remarks": null,
+                "isActive": true,
+                "isDeleted": false,
+                "displayName": "aadhaarCardNumber",
+                "expired": false
+            },
+            {
+                "id": 67192,
+                "documentCategory": "PERSONAL_TAX",
+                "documentNumber": "DGPLM9621X",
+                "documentName": "panCard",
+                "documentIssuer": null,
+                "countryCode": "IN",
+                "frontPhoto": {
+                    "id": 1416756,
+                    "contentLength": 17373,
+                    "contentType": "image/jpeg",
+                    "fileName": "pan_front.jpg",
+                    "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/Driver/10229/docs/PERSONAL_TAXpancard/1791461405916-front-pan_front.jpg"
+                },
+                "backPhoto": null,
+                "additionalPhoto": null,
+                "issueDate": null,
+                "expiryDate": null,
+                "verificationStatus": null,
+                "verificationProvider": null,
+                "verificationReference": null,
+                "remarks": null,
+                "isActive": true,
+                "isDeleted": false,
+                "displayName": "panCard",
+                "expired": false
+            },
+            {
+                "id": 67191,
+                "documentCategory": "DRIVING_LICENSE",
+                "documentNumber": "MH12ETW291788",
+                "documentName": "licenseNumber",
+                "documentIssuer": null,
+                "countryCode": "IN",
+                "frontPhoto": {
+                    "id": 1416754,
+                    "contentLength": 5992,
+                    "contentType": "image/jpeg",
+                    "fileName": "DRIVING_LICENSE_FRONT.jpg",
+                    "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/Driver/10229/docs/DRIVING_LICENSElicensenumber/1791461405769-front-DRIVING_LICENSE_FRONT.jpg"
+                },
+                "backPhoto": {
+                    "id": 1416755,
+                    "contentLength": 5691,
+                    "contentType": "image/jpeg",
+                    "fileName": "DRIVING_LICENSE_BACK.jpg",
+                    "fileUrl": "https://oorjaa-tms-stage-data.s3.ap-south-1.amazonaws.com/PROFILE_PICTURES/Driver/10229/docs/DRIVING_LICENSElicensenumber/1791461405800-back-DRIVING_LICENSE_BACK.jpg"
+                },
+                "additionalPhoto": null,
+                "issueDate": null,
+                "expiryDate": "2026-12-31",
+                "verificationStatus": null,
+                "verificationProvider": null,
+                "verificationReference": null,
+                "remarks": null,
+                "isActive": true,
+                "isDeleted": false,
+                "displayName": "licenseNumber",
+                "expired": false
+            }
+        ],
+        "dcAssigned": false,
+        "verified": false
+    }
+}

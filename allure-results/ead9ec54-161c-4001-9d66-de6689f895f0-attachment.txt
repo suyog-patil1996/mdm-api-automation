@@ -1,0 +1,11 @@
+SELECT
+    bd.account_number,
+    bd.routing_code,
+    bd.account_holder_name,
+    bd.account_type,
+    bd.linked_phone_number
+FROM lkart.bank_details bd
+WHERE bd.entity_id = ?
+ORDER BY bd.id DESC
+LIMIT 1
+ [vendorId=2914]

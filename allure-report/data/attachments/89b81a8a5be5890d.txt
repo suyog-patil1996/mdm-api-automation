@@ -1,0 +1,133 @@
+=============== DATABASE VALIDATION (CREATE) ===============
+
+PASS
+Expected : AUTO_VENDOR_1791462425630
+Actual   : AUTO_VENDOR_1791462425630
+
+PASS
+Expected : Automation User 2804
+Actual   : Automation User 2804
+
+PASS
+Expected : +919636070903
+Actual   : +919636070903
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : India
+Actual   : India
+
+PASS
+Expected : 411045
+Actual   : 411045
+
+PASS
+Expected : PROPRIETORY
+Actual   : PROPRIETORY
+
+PASS
+Expected : Across City
+Actual   : Across City
+
+PASS
+Expected : Automation Testing
+Actual   : Automation Testing
+
+PASS
+Expected : 51
+Actual   : 51
+
+PASS
+Expected : Generated
+Actual   : VE02734
+
+PASS
+Expected : Generated
+Actual   : 49920
+
+PASS
+Expected : Automation User 2804
+Actual   : AUTO_VENDOR_1791462425630
+
+PASS
+Expected : Generated
+Actual   : 8b013865-fada-467f-bc07-5b9c34a2bbf3
+
+PASS
+Expected : Generated
+Actual   : +919636070903
+
+PASS
+Expected : 31462425633
+Actual   : 31462425633
+
+PASS
+Expected : SBIN0001932
+Actual   : SBIN0001932
+
+PASS
+Expected : Automation User 2804
+Actual   : Automation User 2804
+
+PASS
+Expected : SAVINGS
+Actual   : SAVINGS
+
+PASS
+Expected : 9347307419
+Actual   : 9347307419
+
+
+----- DOCUMENTS -----
+
+PASS
+Expected : msmeNumber present
+Actual   : true
+
+PASS
+Expected : msme front_photo_id not null
+Actual   : true
+
+PASS
+Expected : panNumber present
+Actual   : true
+
+PASS
+Expected : pan front_photo_id not null
+Actual   : true
+
+PASS
+Expected : cancelledCheque present
+Actual   : true
+
+PASS
+Expected : cheque front_photo_id not null
+Actual   : true
+
+PASS
+Expected : gstNumber present
+Actual   : true
+
+PASS
+Expected : gst front_photo_id not null
+Actual   : true
+
+PASS
+Expected : aadharCardNumber present
+Actual   : true
+
+PASS
+Expected : aadhar front_photo_id not null
+Actual   : true
+
+PASS
+Expected : Generated
+Actual   : 1416780
+

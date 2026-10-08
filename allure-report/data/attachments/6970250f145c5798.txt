@@ -1,0 +1,22 @@
+=============== API VALIDATION ===============
+
+PASS
+Expected : 200
+Actual   : 200
+
+PASS
+Expected : OK
+Actual   : OK
+
+PASS
+Expected : 200
+Actual   : 200
+
+PASS
+Expected : Driver Registered succesfully.. !
+Actual   : Driver Registered succesfully.. !
+
+PASS
+Expected : Generated
+Actual   : 10230
+

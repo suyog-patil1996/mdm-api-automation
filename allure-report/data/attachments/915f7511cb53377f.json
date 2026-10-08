@@ -1,0 +1,6 @@
+{
+    "status": "BAD_REQUEST",
+    "statusCode": 400,
+    "message": "User with this PhoneNumber already present..!!",
+    "data": null
+}

@@ -123,10 +123,10 @@ public class DriverPayloadBuilder {
     }
 
     public SearchDriverRequest buildSearchDriverRequest() {
-        // If only limit + searchText:
         return SearchDriverRequest.builder()
                 .limit(10)
-                .searchKeyword(String.valueOf(driverContext.getPhoneNumber()))
+                .pageId(0)
+                .searchText(driverContext.getPhoneNumber())  // or firstName
                 .build();
     }
 

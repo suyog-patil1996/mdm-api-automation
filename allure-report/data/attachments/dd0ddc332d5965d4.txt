@@ -1,0 +1,42 @@
+=============== DATABASE VALIDATION (UPDATE) ===============
+
+PASS
+Expected : 10230
+Actual   : 10230
+
+PASS
+Expected : AUTO_DRV_UPD
+Actual   : AUTO_DRV_UPD
+
+PASS
+Expected : Mumbai
+Actual   : Mumbai
+
+PASS
+Expected : Mumbai
+Actual   : Mumbai
+
+PASS
+Expected : +919817474387
+Actual   : +919817474387
+
+PASS
+Expected : 1117
+Actual   : 1117
+
+PASS
+Expected : licenseNumber present
+Actual   : true
+
+PASS
+Expected : panCard present
+Actual   : true
+
+PASS
+Expected : aadhaarCardNumber present
+Actual   : true
+
+PASS
+Expected : policeVerification present
+Actual   : true
+

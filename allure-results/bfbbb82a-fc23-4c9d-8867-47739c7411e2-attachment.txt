@@ -1,0 +1,53 @@
+=============== DATABASE VALIDATION (CREATE) ===============
+
+PASS
+Expected : 10229
+Actual   : 10229
+
+PASS
+Expected : AUTO_DRV
+Actual   : AUTO_DRV
+
+PASS
+Expected : +919996289659
+Actual   : +919996289659
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : Maharashtra
+Actual   : Maharashtra
+
+PASS
+Expected : Pune
+Actual   : Pune
+
+PASS
+Expected : 1117
+Actual   : 1117
+
+PASS
+Expected : Generated
+Actual   : 49918
+
+
+----- DOCUMENTS -----
+
+PASS
+Expected : licenseNumber present
+Actual   : true
+
+PASS
+Expected : panCard present
+Actual   : true
+
+PASS
+Expected : aadhaarCardNumber present
+Actual   : true
+
+PASS
+Expected : policeVerification present
+Actual   : true
+

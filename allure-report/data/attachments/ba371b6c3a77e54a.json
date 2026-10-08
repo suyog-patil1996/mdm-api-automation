@@ -1,6 +1,0 @@
-{
-    "status": "BAD_REQUEST",
-    "statusCode": 400,
-    "message": "Phone Number exists",
-    "data": null
-}

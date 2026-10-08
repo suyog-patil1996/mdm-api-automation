@@ -37,7 +37,6 @@ public class DriverQueries {
                 u.id AS user_table_id,
                 u.first_name,
                 u.phone_number,
-                u.status,
                 u.keycloak_user_id,
                 u.keycloak_username
             FROM lkart.user u
@@ -93,7 +92,6 @@ public class DriverQueries {
 
                 details.setFirstName(rs.getString("first_name"));
                 details.setPhoneNumber(rs.getString("phone_number"));
-                details.setStatus(rs.getString("status"));
                 details.setKeycloakUserId(rs.getString("keycloak_user_id"));
                 details.setKeycloakUsername(rs.getString("keycloak_username"));
 

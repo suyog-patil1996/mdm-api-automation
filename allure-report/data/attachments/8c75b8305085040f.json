@@ -1,0 +1,36 @@
+{
+  "userId" : 49919,
+  "firstName" : "AUTO_DRV_UPD",
+  "lastName" : null,
+  "phoneNumber" : "+919817474387",
+  "keycloakUserId" : "40922721-4f18-4ba7-9330-dffe508b52cc",
+  "keycloakUsername" : "+919817474387",
+  "driverId" : 10230,
+  "userStatus" : "ACTIVE",
+  "state" : "Maharashtra",
+  "city" : "Mumbai",
+  "createdBy" : 20254,
+  "createdDate" : "2026-10-08 12:25:01.550000",
+  "updatedBy" : 20254,
+  "updatedDate" : "2026-10-08 12:25:07.903000",
+  "address1" : "Mumbai",
+  "vendorId" : 1117,
+  "documents" : [ {
+    "documentName" : "aadhaarCardNumber",
+    "frontPhotoId" : 1416767,
+    "backPhotoId" : 1416768
+  }, {
+    "documentName" : "licenseNumber",
+    "frontPhotoId" : 1416764,
+    "backPhotoId" : 1416765
+  }, {
+    "documentName" : "panCard",
+    "frontPhotoId" : 1416766,
+    "backPhotoId" : null
+  }, {
+    "documentName" : "policeVerification",
+    "frontPhotoId" : null,
+    "backPhotoId" : null
+  } ],
+  "country" : "India"
+}

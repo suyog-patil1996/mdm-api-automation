@@ -1,0 +1,55 @@
+{
+  "vendorId" : 2914,
+  "nameOfCompany" : "Updated_AUTO_VENDOR_1791462425630",
+  "ownerPhoneNumber" : "9588483078",
+  "ownerName" : "Updated Owner",
+  "city" : "Pune",
+  "country" : "India",
+  "address1" : "Pune Updated",
+  "registeredUnder" : "PROPRIETORY",
+  "userStatus" : "ACTIVE",
+  "vendorCode" : "VE02734",
+  "zipCode" : "411045",
+  "serviceableArea" : "Updated Service Area",
+  "comments" : "Updated By Automation",
+  "userId" : 49920,
+  "createdBy" : "20254",
+  "createdDate" : 1791442626991,
+  "updatedBy" : "20254",
+  "updatedDate" : 1791442635909,
+  "dbUserId" : 49920,
+  "firstName" : "AUTO_VENDOR_1791462425630",
+  "phoneNumber" : "9588483078",
+  "status" : "ACTIVE",
+  "keycloakId" : "8b013865-fada-467f-bc07-5b9c34a2bbf3",
+  "keycloakUsername" : "9588483078",
+  "deliveryCenterId" : 51,
+  "documents" : [ {
+    "documentName" : "aadharCardNumber",
+    "frontPhotoId" : 1416779,
+    "backPhotoId" : 1416780
+  }, {
+    "documentName" : "cancelledCheque",
+    "frontPhotoId" : 1416777,
+    "backPhotoId" : null
+  }, {
+    "documentName" : "gstNumber",
+    "frontPhotoId" : 1416778,
+    "backPhotoId" : null
+  }, {
+    "documentName" : "msmeNumber",
+    "frontPhotoId" : 1416775,
+    "backPhotoId" : null
+  }, {
+    "documentName" : "panNumber",
+    "frontPhotoId" : 1416776,
+    "backPhotoId" : null
+  } ],
+  "bankDetails" : {
+    "accountNumber" : "31462434438",
+    "routingCode" : "SBIN0001932",
+    "accountHolderName" : "Updated Owner",
+    "accountType" : "SAVINGS",
+    "linkedPhoneNumber" : "9347307419"
+  }
+}

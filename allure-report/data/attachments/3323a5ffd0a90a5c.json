@@ -1,0 +1,6 @@
+{
+    "status": "INTERNAL_SERVER_ERROR",
+    "statusCode": 500,
+    "message": "Cannot invoke \"String.equals(Object)\" because the return value of \"com.lkart.common.models.ListingModel.getSortField()\" is null",
+    "data": null
+}

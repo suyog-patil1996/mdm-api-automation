@@ -1,0 +1,36 @@
+{
+  "userId" : 49919,
+  "firstName" : "AUTO_DRV",
+  "lastName" : null,
+  "phoneNumber" : "+919209218771",
+  "keycloakUserId" : "40922721-4f18-4ba7-9330-dffe508b52cc",
+  "keycloakUsername" : "+919209218771",
+  "driverId" : 10230,
+  "userStatus" : "UNAPPROVED",
+  "state" : "Maharashtra",
+  "city" : "Pune",
+  "createdBy" : 20254,
+  "createdDate" : "2026-10-08 12:25:01.550000",
+  "updatedBy" : null,
+  "updatedDate" : "2026-10-08 12:25:02.261000",
+  "address1" : "Pune",
+  "vendorId" : 1117,
+  "documents" : [ {
+    "documentName" : "aadhaarCardNumber",
+    "frontPhotoId" : 1416767,
+    "backPhotoId" : 1416768
+  }, {
+    "documentName" : "licenseNumber",
+    "frontPhotoId" : 1416764,
+    "backPhotoId" : 1416765
+  }, {
+    "documentName" : "panCard",
+    "frontPhotoId" : 1416766,
+    "backPhotoId" : null
+  }, {
+    "documentName" : "policeVerification",
+    "frontPhotoId" : null,
+    "backPhotoId" : null
+  } ],
+  "country" : "India"
+}

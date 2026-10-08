@@ -15,6 +15,8 @@ public class DriverDetails {
     private String keycloakUsername;
 
     private Integer driverId;
+    private String userStatus;
+    private String Country;
     private String state;
     private String city;
     private Integer createdBy;

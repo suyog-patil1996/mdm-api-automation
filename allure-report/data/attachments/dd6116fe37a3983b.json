@@ -1,0 +1,62 @@
+{
+  "id" : null,
+  "vendorId" : 1117,
+  "vehicleId" : null,
+  "deliveryCenterId" : null,
+  "drivingLicense" : "MH12ETW711324",
+  "dateOfBirth" : null,
+  "firstName" : "AUTO_DRV",
+  "middleName" : null,
+  "lastName" : "",
+  "phoneNumber" : "+919209218771",
+  "alternatePhoneNumber" : null,
+  "vehicleClasses" : [ ],
+  "countryId" : "9c7ac8b9-3c25-11ee-bd0f-0a9d1c57a228",
+  "stateId" : "9c855c48-3c25-11ee-bd0f-0a9d1c57a228",
+  "cityId" : "9c9a92aa-3c25-11ee-bd0f-0a9d1c57a228",
+  "country" : "India",
+  "state" : "Maharashtra",
+  "city" : "Pune",
+  "address1" : "Pune",
+  "address2" : "Baner",
+  "address3" : "Baner gaon",
+  "password" : "1111",
+  "isLicenceVerified" : false,
+  "documents" : [ {
+    "documentCategory" : "DRIVING_LICENSE",
+    "documentNumber" : "MH12ETW711324",
+    "countryCode" : "IN",
+    "documentName" : "licenseNumber",
+    "expiryDate" : "2026-12-31",
+    "issueDate" : null,
+    "verificationStatus" : null
+  }, {
+    "documentCategory" : "PERSONAL_TAX",
+    "documentNumber" : "KSQNV1830D",
+    "countryCode" : "IN",
+    "documentName" : "panCard",
+    "expiryDate" : null,
+    "issueDate" : null,
+    "verificationStatus" : null
+  }, {
+    "documentCategory" : "NATIONAL_ID",
+    "documentNumber" : "833134759112",
+    "countryCode" : "IN",
+    "documentName" : "aadhaarCardNumber",
+    "expiryDate" : null,
+    "issueDate" : null,
+    "verificationStatus" : null
+  }, {
+    "documentCategory" : "POLICE_VERIFICATION",
+    "documentNumber" : "",
+    "countryCode" : "IN",
+    "documentName" : "policeVerification",
+    "expiryDate" : "",
+    "issueDate" : "",
+    "verificationStatus" : "NOT_STARTED"
+  } ],
+  "vehicleRegistrationNumber" : null,
+  "isVehicleAssigned" : false,
+  "permanentDeliveryCenterId" : null,
+  "dcAssigned" : false
+}

@@ -1,0 +1,15 @@
+SELECT
+    dd.document_name,
+    dd.front_photo_id,
+    dd.back_photo_id
+FROM lkart.document dd
+WHERE dd.entity_type = 'driver'
+  AND dd.entity_id = ?
+  AND dd.document_name IN (
+      'panCard',
+      'aadhaarCardNumber',
+      'policeVerification',
+      'licenseNumber'
+  )
+ORDER BY dd.document_name
+ [driverId=10230]
