@@ -119,16 +119,10 @@ public class VendorService {
 
         attachRequest("Approve Vendor", request);
 
-        Response response =
-                vendorAPI.approveVendor(request);
+        Response response = vendorAPI.approveVendor(request);
 
-        AllureHelper.attachResponse(
-                "Approve Vendor",
-                response.asPrettyString());
-
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Approve Vendor", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         vendorValidation.validateVendorApproval(response);
     }

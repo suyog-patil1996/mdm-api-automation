@@ -1,0 +1,16 @@
+SELECT
+    d.document_name,
+    d.front_photo_id,
+    d.back_photo_id
+FROM lkart.document d
+WHERE d.entity_type = 'vendor'
+  AND d.entity_id = ?
+  AND d.document_name IN (
+      'msmeNumber',
+      'cancelledCheque',
+      'gstNumber',
+      'aadharCardNumber',
+      'panNumber'
+  )
+ORDER BY d.document_name
+ [vendorId=2910]

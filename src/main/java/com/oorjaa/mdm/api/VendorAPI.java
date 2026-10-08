@@ -34,18 +34,16 @@ public class VendorAPI {
 
         return baseAPI.request()
                 .multiPart("data", toJson(request), "application/json")
-                // Part names: confirm in browser Network tab and adjust if needed
-                .multiPart("panNumber", panFront, "image/jpeg")
                 .multiPart("aadharCardNumber_front", aadhaarFront, "image/jpeg")
                 .multiPart("aadharCardNumber_back", aadhaarBack, "image/jpeg")
-                .multiPart("cancelledCheque", cancelledCheque, "image/png")
-                .multiPart("gstNumber", gstCert, "image/jpeg")
-                .multiPart("msmeNumber", msmeCert, "image/png")
+                .multiPart("panNumber_front", panFront, "image/jpeg")
+                .multiPart("msmeNumber_front", msmeCert, "image/png")
+                .multiPart("gstNumber_front", gstCert, "image/jpeg")
+                .multiPart("cancelledCheque_front", cancelledCheque, "image/png")
                 .when()
                 .post(ApiEndpoints.CREATE_VENDOR);
     }
 
-    /** Fallback if you still need create without files */
     public Response createVendor(CreateVendorRequest request) {
         return baseAPI.request()
                 .multiPart("data", toJson(request), "application/json")
@@ -53,11 +51,15 @@ public class VendorAPI {
                 .post(ApiEndpoints.CREATE_VENDOR);
     }
 
+    /**
+     * Approve vendor = same endpoint as update, with requestType APPROVAL_PAGE.
+     */
     public Response approveVendor(ApproveVendorRequest request) {
         return baseAPI.request()
                 .multiPart("data", toJson(request), "application/json")
                 .when()
                 .put(ApiEndpoints.UPDATE_VENDOR);
+        // same URL as update, different request type
     }
 
     public Response searchVendor(SearchVendorRequest request) {

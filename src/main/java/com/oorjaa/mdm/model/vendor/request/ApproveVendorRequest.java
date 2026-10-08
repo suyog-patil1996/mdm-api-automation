@@ -1,21 +1,71 @@
 package com.oorjaa.mdm.model.vendor.request;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @Data
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class ApproveVendorRequest extends UpdateVendorRequest {
+public class ApproveVendorRequest {
 
-    /**
-     * API request type.
-     * Example: APPROVAL_PAGE
-     */
-    private String requestType;
+    private Integer id;
+    private String nameOfCompany;
+    private String registeredUnder;
+
+    private String address1;
+    private String address2;
+    private String landmark;
+
+    private String cityId;
+    private String countryId;
+    private String stateId;
+
+    private String country;
+    private String state;
+    private String city;
+    private String zipCode;
+
+    private String vendorType;
+    private String vendorOperationalDate;
+    private String commercialId;
+    private String smeRegistrationNumber;
+
+    private String ownerName;
+    private String ownerPhoneNumber;
+    private String ownerEmailId;
+
+    private String operationPointOfContact;
+    private String operationEmailId;
+    private String financePointOfContact;
+    private String financeEmailId;
+
+    private List<DcModel> dcModelList;
+    private String serviceableArea;
+    private String comments;
+    private List<VehicleModel> vehicleList;
+
+    private String status;
+
+    private String panCard;
+    private String upiPhoneNumber;
+    private String aadharNumber;
+
+    private Boolean isTdsApplicable;
+    private Double tdsPercentage;
+
+    private Boolean isPanVerified;
+    private Boolean isBankDetailsVerified;
+    private Boolean isPanAadharLinked;
+
+    private List<VendorGstDetail> vendorGstDetails;
+    private List<Document> documents;
+    private List<BankDetails> bankDetails;
+
+    /** UI sends this on approval */
+    private String requestType; // "APPROVAL_PAGE"
 }
