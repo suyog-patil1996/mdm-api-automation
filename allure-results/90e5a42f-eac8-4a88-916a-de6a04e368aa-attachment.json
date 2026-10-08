@@ -1,0 +1,17 @@
+{
+  "userId" : 49910,
+  "firstName" : "AUTO_DRV_UPD",
+  "lastName" : "",
+  "phoneNumber" : "+919337629022",
+  "keycloakUserId" : "f2a8e3bd-2caa-492e-8700-aa4024f94483",
+  "keycloakUsername" : "+919337629022",
+  "driverId" : 10227,
+  "state" : "Maharashtra",
+  "city" : "Mumbai",
+  "createdBy" : 20254,
+  "createdDate" : "2026-10-08 05:06:41.340000",
+  "updatedBy" : 20254,
+  "updatedDate" : "2026-10-08 05:06:49.019000",
+  "address1" : "Mumbai",
+  "vendorId" : 1117
+}

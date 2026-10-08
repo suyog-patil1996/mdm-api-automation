@@ -1,0 +1,26 @@
+=============== DATABASE VALIDATION ===============
+
+PASS
+Expected : 222
+Actual   : 222
+
+PASS
+Expected : AUTO_DA_UPD
+Actual   : AUTO_DA_UPD
+
+PASS
+Expected : Mumbai
+Actual   : Mumbai
+
+PASS
+Expected : Mumbai
+Actual   : Mumbai
+
+PASS
+Expected : +919284856015
+Actual   : +919284856015
+
+PASS
+Expected : 1117
+Actual   : 1117
+

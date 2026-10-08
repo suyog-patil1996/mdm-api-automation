@@ -1,1 +1,0 @@
-DriverDetails(userId=49908, firstName=AUTO_DRV, lastName=, phoneNumber=+919834646192, keycloakUserId=decff2bf-d3bc-4ede-93e6-0148ece9aef6, keycloakUsername=+919834646192, driverId=10226, state=Maharashtra, city=Pune, createdBy=20254, createdDate=2026-10-07 11:49:20.116000, updatedBy=null, updatedDate=2026-10-07 11:49:21.138000, address1=Pune, vendorId=1117)

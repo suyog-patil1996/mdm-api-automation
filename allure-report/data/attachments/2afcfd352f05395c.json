@@ -1,0 +1,62 @@
+{
+    "status": "OK",
+    "statusCode": 200,
+    "message": "record found",
+    "data": {
+        "driverAssistant": [
+            {
+                "id": 222,
+                "ownerName": null,
+                "statusToShow": null,
+                "userModel": {
+                    "phoneNumber": "+919284856015",
+                    "firstName": "AUTO_DA",
+                    "clientId": 0,
+                    "sessionExpire": 0,
+                    "refreshExpire": 0,
+                    "createCashierWallet": false,
+                    "validUserDetails": true,
+                    "selfSignup": false
+                },
+                "userStatus": "ACTIVE",
+                "userStatusToShow": "Active",
+                "vendorModel": null,
+                "driverType": null,
+                "city": "Pune",
+                "state": "Maharashtra",
+                "phoneNumber": null,
+                "address1": "Pune",
+                "address2": "",
+                "address3": "",
+                "country": "India",
+                "educationQualification": "BA",
+                "aadharCardNumber": null,
+                "panCard": null,
+                "policeVerification": false,
+                "smartPhone": false,
+                "firstName": null,
+                "middleName": null,
+                "lastName": null,
+                "vendorId": null,
+                "vendorName": "Suyog Transport ",
+                "registrationDate": "08/10/2026",
+                "deliveryCenterName": null,
+                "alternatePhoneNumber": null,
+                "pancardFrontPhoto": null,
+                "pancardFrontImage": null,
+                "pancardBackPhoto": null,
+                "pancardBackImage": null,
+                "aadharCardFrontPhoto": null,
+                "aadharCardFrontImage": null,
+                "aadharCardBackPhoto": null,
+                "aadharCardBackImage": null,
+                "policeVerificationPhoto": null,
+                "policeVerificationImage": null,
+                "isAadharVerified": false,
+                "aadharDetails": null,
+                "documents": null
+            }
+        ],
+        "totalData": 1
+    }
+}

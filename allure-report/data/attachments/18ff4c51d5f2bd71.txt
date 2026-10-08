@@ -1,2 +1,0 @@
-Status Code : 400
-Response Time : 576 ms

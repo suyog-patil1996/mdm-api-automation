@@ -30,4 +30,17 @@ public final class ApiEndpoints {
 
     public static final String UPDATE_DRIVER =
             "/api/updateDriverDetails/v2";
+
+    // Driver Assistant (DA)
+    public static final String CREATE_DA =
+            "/api/driver/assistant/addDriverAssistantDetails/v2";
+
+    public static final String APPROVE_DA =
+            "/api/driver/assistant/status";
+
+    public static final String SEARCH_DA =
+            "/api/driver/assistant/getDriverAssistantDetails";
+
+    public static final String UPDATE_DA =
+            "/api/driver/assistant/updateDriverAssistantDetailById/v2";
 }
