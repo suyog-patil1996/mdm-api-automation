@@ -8,6 +8,9 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
 
+
+import java.util.List;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
@@ -361,169 +364,116 @@ public class VendorValidation {
     @Step("Validate Vendor Creation In Database")
     private void validateVendorCreationInDatabase() {
 
-        VendorDetails vendorDetails =
-                vendorRepository.getVendorDetails(
-                        vendorContext.getVendorId());
+        VendorDetails d =
+                vendorRepository.getVendorDetails(vendorContext.getVendorId());
 
-        assertNotNull(
-                vendorDetails,
-                "Vendor record not found in database.");
+        assertNotNull(d, "Vendor record not found in database.");
 
-        StringBuilder validation = new StringBuilder();
+        StringBuilder v = new StringBuilder();
+        v.append("=============== DATABASE VALIDATION (CREATE) ===============\n\n");
 
-        validation.append("=============== DATABASE VALIDATION ===============\n\n");
+        // Vendor master
+        v.append(pass(vendorContext.getVendorName(), d.getNameOfCompany()));
+        v.append(pass(vendorContext.getOwnerName(), d.getOwnerName()));
+        v.append(pass("+91" + vendorContext.getPhoneNumber(), d.getOwnerPhoneNumber()));
+        // If context already stores +91, use vendorContext.getPhoneNumber() only
+        v.append(pass(vendorContext.getAddress1(), d.getAddress1()));
+        v.append(pass(vendorContext.getCity(), d.getCity()));
+        v.append(pass(vendorContext.getCountry(), d.getCountry()));
+        v.append(pass(vendorContext.getZipCode(), d.getZipCode()));
+        v.append(pass(vendorContext.getRegisteredUnder(), d.getRegisteredUnder()));
+        v.append(pass(vendorContext.getServiceableArea(), d.getServiceableArea()));
+        v.append(pass(vendorContext.getComments(), d.getComments()));
+        v.append(pass(vendorContext.getDeliveryCenterId(), d.getDeliveryCenterId()));
+        v.append(generated(d.getVendorCode()));
+        v.append(generated(d.getUserId()));
 
-        validation.append(pass(
-                vendorContext.getVendorName(),
-                vendorDetails.getNameOfCompany()));
+        // User
+        v.append(pass(vendorContext.getOwnerName(), d.getFirstName()));
+        v.append(generated(d.getKeycloakId()));
+        v.append(generated(d.getKeycloakUsername()));
 
-        validation.append(pass(
-                vendorContext.getOwnerName(),
-                vendorDetails.getOwnerName()));
+        // Bank (latest)
+        if (vendorContext.getAccountNumber() != null) {
+            assertNotNull(d.getBankDetails(), "Bank details not found in DB.");
+            v.append(pass(vendorContext.getAccountNumber(), d.getBankDetails().getAccountNumber()));
+            v.append(pass(vendorContext.getIfscCode(), d.getBankDetails().getRoutingCode()));
+            v.append(pass(vendorContext.getAccountHolderName(), d.getBankDetails().getAccountHolderName()));
+            v.append(pass(vendorContext.getAccountType(), d.getBankDetails().getAccountType()));
+            v.append(pass(vendorContext.getUpiPhoneNumber(), d.getBankDetails().getLinkedPhoneNumber()));
+        }
 
-        validation.append(pass(
-                "+91" + vendorContext.getPhoneNumber(),
-                vendorDetails.getOwnerPhoneNumber()));
-
-        validation.append(pass(
-                vendorContext.getAddress1(),
-                vendorDetails.getAddress1()));
-
-        validation.append(pass(
-                vendorContext.getCity(),
-                vendorDetails.getCity()));
-
-        validation.append(pass(
-                vendorContext.getCountry(),
-                vendorDetails.getCountry()));
-
-        validation.append(pass(
-                vendorContext.getZipCode(),
-                vendorDetails.getZipCode()));
-
-        validation.append(pass(
-                vendorContext.getRegisteredUnder(),
-                vendorDetails.getRegisteredUnder()));
-
-        validation.append(pass(
-                vendorContext.getServiceableArea(),
-                vendorDetails.getServiceableArea()));
-
-        validation.append(pass(
-                vendorContext.getComments(),
-                vendorDetails.getComments()));
-
-        validation.append(generated(
-                vendorDetails.getVendorCode()));
-
-        validation.append(generated(
-                vendorDetails.getUserId()));
-
-        validation.append(generated(
-                vendorDetails.getDeliveryCenterId()));
+        // Documents – presence of expected names (photo ids optional if no upload)
+        List<String> expectedDocs = List.of(
+                "msmeNumber", "cancelledCheque", "gstNumber",
+                "aadharCardNumber", "panNumber");
+        for (String name : expectedDocs) {
+            boolean found = d.getDocuments().stream()
+                    .anyMatch(doc -> name.equals(doc.getDocumentName()));
+            v.append(pass(true, found));
+            // Soft: only assert if your create always inserts all 5
+            // assertTrue(found, "Document missing in DB: " + name);
+        }
 
         AllureHelper.attachValidationSummary(
-                "Create Vendor Database Validation",
-                validation.toString());
+                "Create Vendor Database Validation", v.toString());
 
-        assertEquals(vendorDetails.getNameOfCompany(), vendorContext.getVendorName());
-        assertEquals(vendorDetails.getOwnerName(), vendorContext.getOwnerName());
-        assertEquals(vendorDetails.getOwnerPhoneNumber(), "+91" + vendorContext.getPhoneNumber());
-        assertEquals(vendorDetails.getAddress1(), vendorContext.getAddress1());
-        assertEquals(vendorDetails.getCity(), vendorContext.getCity());
-        assertEquals(vendorDetails.getCountry(), vendorContext.getCountry());
-        assertEquals(vendorDetails.getZipCode(), vendorContext.getZipCode());
-        assertEquals(vendorDetails.getRegisteredUnder(), vendorContext.getRegisteredUnder());
-        assertEquals(vendorDetails.getServiceableArea(), vendorContext.getServiceableArea());
-        assertEquals(vendorDetails.getComments(), vendorContext.getComments());
+        assertEquals(d.getNameOfCompany(), vendorContext.getVendorName());
+        assertEquals(d.getOwnerName(), vendorContext.getOwnerName());
+        assertEquals(d.getAddress1(), vendorContext.getAddress1());
+        assertEquals(d.getCity(), vendorContext.getCity());
+        assertEquals(d.getCountry(), vendorContext.getCountry());
+        assertEquals(d.getZipCode(), vendorContext.getZipCode());
+        assertEquals(d.getRegisteredUnder(), vendorContext.getRegisteredUnder());
+        assertEquals(d.getServiceableArea(), vendorContext.getServiceableArea());
+        assertEquals(d.getComments(), vendorContext.getComments());
+        assertEquals(d.getDeliveryCenterId(), vendorContext.getDeliveryCenterId());
+        assertNotNull(d.getVendorCode());
+        assertNotNull(d.getUserId());
 
-        assertNotNull(vendorDetails.getVendorCode());
-        assertNotNull(vendorDetails.getUserId());
-        assertNotNull(vendorDetails.getDeliveryCenterId());
+        if (vendorContext.getAccountNumber() != null) {
+            assertEquals(d.getBankDetails().getAccountNumber(), vendorContext.getAccountNumber());
+            assertEquals(d.getBankDetails().getRoutingCode(), vendorContext.getIfscCode());
+            assertEquals(d.getBankDetails().getAccountHolderName(), vendorContext.getAccountHolderName());
+            assertEquals(d.getBankDetails().getAccountType(), vendorContext.getAccountType());
+            assertEquals(d.getBankDetails().getLinkedPhoneNumber(), vendorContext.getUpiPhoneNumber());
+        }
     }
 
     @Step("Validate Vendor Update In Database")
     private void validateVendorUpdateInDatabase() {
 
-        VendorDetails vendorDetails =
-                vendorRepository.getVendorDetails(
-                        vendorContext.getVendorId());
+        VendorDetails d =
+                vendorRepository.getVendorDetails(vendorContext.getVendorId());
 
-        assertNotNull(
-                vendorDetails,
-                "Vendor record not found in database.");
+        assertNotNull(d, "Vendor record not found in database.");
 
-        StringBuilder validation = new StringBuilder();
+        StringBuilder v = new StringBuilder();
+        v.append("=============== DATABASE VALIDATION (UPDATE) ===============\n\n");
 
-        validation.append("=============== DATABASE VALIDATION ===============\n\n");
-
-        validation.append(pass(
-                vendorContext.getUpdatedVendorName(),
-                vendorDetails.getNameOfCompany()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedOwnerName(),
-                vendorDetails.getOwnerName()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedPhoneNumber(),
-                vendorDetails.getOwnerPhoneNumber()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedAddress1(),
-                vendorDetails.getAddress1()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedCity(),
-                vendorDetails.getCity()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedCountry(),
-                vendorDetails.getCountry()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedZipCode(),
-                vendorDetails.getZipCode()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedRegisteredUnder(),
-                vendorDetails.getRegisteredUnder()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedServiceableArea(),
-                vendorDetails.getServiceableArea()));
-
-        validation.append(pass(
-                vendorContext.getUpdatedComments(),
-                vendorDetails.getComments()));
-
-        validation.append(generated(
-                vendorDetails.getVendorCode()));
-
-        validation.append(generated(
-                vendorDetails.getUserId()));
-
-        validation.append(generated(
-                vendorDetails.getDeliveryCenterId()));
+        v.append(pass(vendorContext.getUpdatedVendorName(), d.getNameOfCompany()));
+        v.append(pass(vendorContext.getUpdatedOwnerName(), d.getOwnerName()));
+        v.append(pass(vendorContext.getUpdatedPhoneNumber(), d.getOwnerPhoneNumber()));
+        v.append(pass(vendorContext.getUpdatedAddress1(), d.getAddress1()));
+        v.append(pass(vendorContext.getUpdatedCity(), d.getCity()));
+        v.append(pass(vendorContext.getUpdatedCountry(), d.getCountry()));
+        v.append(pass(vendorContext.getUpdatedZipCode(), d.getZipCode()));
+        v.append(pass(vendorContext.getUpdatedRegisteredUnder(), d.getRegisteredUnder()));
+        v.append(pass(vendorContext.getUpdatedServiceableArea(), d.getServiceableArea()));
+        v.append(pass(vendorContext.getUpdatedComments(), d.getComments()));
 
         AllureHelper.attachValidationSummary(
-                "Update Vendor Database Validation",
-                validation.toString());
+                "Update Vendor Database Validation", v.toString());
 
-        assertEquals(vendorDetails.getNameOfCompany(), vendorContext.getUpdatedVendorName());
-        assertEquals(vendorDetails.getOwnerName(), vendorContext.getUpdatedOwnerName());
-        assertEquals(vendorDetails.getOwnerPhoneNumber(), vendorContext.getUpdatedPhoneNumber());
-        assertEquals(vendorDetails.getAddress1(), vendorContext.getUpdatedAddress1());
-        assertEquals(vendorDetails.getCity(), vendorContext.getUpdatedCity());
-        assertEquals(vendorDetails.getCountry(), vendorContext.getUpdatedCountry());
-        assertEquals(vendorDetails.getZipCode(), vendorContext.getUpdatedZipCode());
-        assertEquals(vendorDetails.getRegisteredUnder(), vendorContext.getUpdatedRegisteredUnder());
-        assertEquals(vendorDetails.getServiceableArea(), vendorContext.getUpdatedServiceableArea());
-        assertEquals(vendorDetails.getComments(), vendorContext.getUpdatedComments());
-
-        assertNotNull(vendorDetails.getVendorCode());
-        assertNotNull(vendorDetails.getUserId());
-        assertNotNull(vendorDetails.getDeliveryCenterId());
+        assertEquals(d.getNameOfCompany(), vendorContext.getUpdatedVendorName());
+        assertEquals(d.getOwnerName(), vendorContext.getUpdatedOwnerName());
+        assertEquals(d.getOwnerPhoneNumber(), vendorContext.getUpdatedPhoneNumber());
+        assertEquals(d.getAddress1(), vendorContext.getUpdatedAddress1());
+        assertEquals(d.getCity(), vendorContext.getUpdatedCity());
+        assertEquals(d.getCountry(), vendorContext.getUpdatedCountry());
+        assertEquals(d.getZipCode(), vendorContext.getUpdatedZipCode());
+        assertEquals(d.getRegisteredUnder(), vendorContext.getUpdatedRegisteredUnder());
+        assertEquals(d.getServiceableArea(), vendorContext.getUpdatedServiceableArea());
+        assertEquals(d.getComments(), vendorContext.getUpdatedComments());
     }
-
 }

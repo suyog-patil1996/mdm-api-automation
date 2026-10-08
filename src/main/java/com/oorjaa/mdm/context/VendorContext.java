@@ -21,6 +21,7 @@ public class VendorContext {
 
     private String address1;
     private String city;
+    private String state;
     private String country;
     private String zipCode;
 
@@ -50,4 +51,14 @@ public class VendorContext {
     private String updatedServiceableArea;
 
     private Integer updatedDeliveryCenterId;
+    // Bank (create / update)
+    private String accountNumber;
+    private String ifscCode;           // routing_code
+    private String accountHolderName;
+    private String accountType;
+    private String upiPhoneNumber;     // linked_phone_number
+    private String bankName;
+    private  String branchName;
+
+    // getters/setters via Lombok @Getter @Setter on class
 }

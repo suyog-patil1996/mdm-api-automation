@@ -1,10 +1,13 @@
 package com.oorjaa.mdm.model.vendor;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VendorDetails {
 
-    // Vendor Table
+    // Vendor
+    private Integer vendorId;
     private String nameOfCompany;
     private String ownerPhoneNumber;
     private String ownerName;
@@ -13,19 +16,17 @@ public class VendorDetails {
     private String address1;
     private String registeredUnder;
     private String userStatus;
-    private String vendorCode;
+    private String vendorCode;       // unique_code
     private String zipCode;
     private String serviceableArea;
     private String comments;
     private Integer userId;
-
     private String createdBy;
     private Timestamp createdDate;
-    private String approvedStatus;
     private String updatedBy;
     private Timestamp updatedDate;
 
-    // User Table
+    // User
     private Integer dbUserId;
     private String firstName;
     private String phoneNumber;
@@ -33,206 +34,91 @@ public class VendorDetails {
     private String keycloakId;
     private String keycloakUsername;
 
-    // Vendor Delivery Center
+    // DC
     private Integer deliveryCenterId;
 
-    public String getNameOfCompany() {
-        return nameOfCompany;
-    }
+    // Docs + bank (filled by separate queries)
+    private List<VendorDocumentRow> documents = new ArrayList<>();
+    private VendorBankRow bankDetails;
 
-    public void setNameOfCompany(String nameOfCompany) {
-        this.nameOfCompany = nameOfCompany;
-    }
+    public Integer getVendorId() { return vendorId; }
+    public void setVendorId(Integer vendorId) { this.vendorId = vendorId; }
 
-    public String getOwnerPhoneNumber() {
-        return ownerPhoneNumber;
-    }
+    public String getNameOfCompany() { return nameOfCompany; }
+    public void setNameOfCompany(String nameOfCompany) { this.nameOfCompany = nameOfCompany; }
 
-    public void setOwnerPhoneNumber(String ownerPhoneNumber) {
-        this.ownerPhoneNumber = ownerPhoneNumber;
-    }
+    public String getOwnerPhoneNumber() { return ownerPhoneNumber; }
+    public void setOwnerPhoneNumber(String ownerPhoneNumber) { this.ownerPhoneNumber = ownerPhoneNumber; }
 
-    public String getOwnerName() {
-        return ownerName;
-    }
+    public String getOwnerName() { return ownerName; }
+    public void setOwnerName(String ownerName) { this.ownerName = ownerName; }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
-    }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 
-    public String getCity() {
-        return city;
-    }
+    public String getCountry() { return country; }
+    public void setCountry(String country) { this.country = country; }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+    public String getAddress1() { return address1; }
+    public void setAddress1(String address1) { this.address1 = address1; }
 
-    public String getCountry() {
-        return country;
-    }
+    public String getRegisteredUnder() { return registeredUnder; }
+    public void setRegisteredUnder(String registeredUnder) { this.registeredUnder = registeredUnder; }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    public String getUserStatus() { return userStatus; }
+    public void setUserStatus(String userStatus) { this.userStatus = userStatus; }
 
-    public String getAddress1() {
-        return address1;
-    }
+    public String getVendorCode() { return vendorCode; }
+    public void setVendorCode(String vendorCode) { this.vendorCode = vendorCode; }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
+    public String getZipCode() { return zipCode; }
+    public void setZipCode(String zipCode) { this.zipCode = zipCode; }
 
-    public String getRegisteredUnder() {
-        return registeredUnder;
-    }
+    public String getServiceableArea() { return serviceableArea; }
+    public void setServiceableArea(String serviceableArea) { this.serviceableArea = serviceableArea; }
 
-    public void setRegisteredUnder(String registeredUnder) {
-        this.registeredUnder = registeredUnder;
-    }
+    public String getComments() { return comments; }
+    public void setComments(String comments) { this.comments = comments; }
 
-    public String getUserStatus() {
-        return userStatus;
-    }
+    public Integer getUserId() { return userId; }
+    public void setUserId(Integer userId) { this.userId = userId; }
 
-    public void setUserStatus(String userStatus) {
-        this.userStatus = userStatus;
-    }
+    public String getCreatedBy() { return createdBy; }
+    public void setCreatedBy(String createdBy) { this.createdBy = createdBy; }
 
-    public String getVendorCode() {
-        return vendorCode;
-    }
+    public Timestamp getCreatedDate() { return createdDate; }
+    public void setCreatedDate(Timestamp createdDate) { this.createdDate = createdDate; }
 
-    public void setVendorCode(String vendorCode) {
-        this.vendorCode = vendorCode;
-    }
+    public String getUpdatedBy() { return updatedBy; }
+    public void setUpdatedBy(String updatedBy) { this.updatedBy = updatedBy; }
 
-    public String getZipCode() {
-        return zipCode;
-    }
+    public Timestamp getUpdatedDate() { return updatedDate; }
+    public void setUpdatedDate(Timestamp updatedDate) { this.updatedDate = updatedDate; }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
+    public Integer getDbUserId() { return dbUserId; }
+    public void setDbUserId(Integer dbUserId) { this.dbUserId = dbUserId; }
 
-    public String getServiceableArea() {
-        return serviceableArea;
-    }
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public void setServiceableArea(String serviceableArea) {
-        this.serviceableArea = serviceableArea;
-    }
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 
-    public String getComments() {
-        return comments;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
+    public String getKeycloakId() { return keycloakId; }
+    public void setKeycloakId(String keycloakId) { this.keycloakId = keycloakId; }
 
-    public Integer getUserId() {
-        return userId;
-    }
+    public String getKeycloakUsername() { return keycloakUsername; }
+    public void setKeycloakUsername(String keycloakUsername) { this.keycloakUsername = keycloakUsername; }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    public Integer getDeliveryCenterId() { return deliveryCenterId; }
+    public void setDeliveryCenterId(Integer deliveryCenterId) { this.deliveryCenterId = deliveryCenterId; }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
+    public List<VendorDocumentRow> getDocuments() { return documents; }
+    public void setDocuments(List<VendorDocumentRow> documents) { this.documents = documents; }
 
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Timestamp getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getApprovedStatus() {
-        return approvedStatus;
-    }
-
-    public void setApprovedStatus(String approvedStatus) {
-        this.approvedStatus = approvedStatus;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public Timestamp getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Timestamp updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public Integer getDbUserId() {
-        return dbUserId;
-    }
-
-    public void setDbUserId(Integer dbUserId) {
-        this.dbUserId = dbUserId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getKeycloakId() {
-        return keycloakId;
-    }
-
-    public void setKeycloakId(String keycloakId) {
-        this.keycloakId = keycloakId;
-    }
-
-    public String getKeycloakUsername() {
-        return keycloakUsername;
-    }
-
-    public void setKeycloakUsername(String keycloakUsername) {
-        this.keycloakUsername = keycloakUsername;
-    }
-
-    public Integer getDeliveryCenterId() {
-        return deliveryCenterId;
-    }
-
-    public void setDeliveryCenterId(Integer deliveryCenterId) {
-        this.deliveryCenterId = deliveryCenterId;
-    }
+    public VendorBankRow getBankDetails() { return bankDetails; }
+    public void setBankDetails(VendorBankRow bankDetails) { this.bankDetails = bankDetails; }
 }
