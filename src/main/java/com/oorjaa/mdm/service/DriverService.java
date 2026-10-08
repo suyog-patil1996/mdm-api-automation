@@ -37,9 +37,6 @@ public class DriverService {
         this.objectMapper = objectMapper;
     }
 
-    /**
-     * Create Driver (+ API & DB validation)
-     */
     public void createDriver() {
 
         AllureHelper.addStep("Create Driver");
@@ -52,24 +49,24 @@ public class DriverService {
 
         File licenseFront = loadResourceFile(DriverConstants.LICENSE_FRONT);
         File licenseBack = loadResourceFile(DriverConstants.LICENSE_BACK);
+        File aadhaarFront = loadResourceFile(DriverConstants.AADHAAR_FRONT);
+        File aadhaarBack = loadResourceFile(DriverConstants.AADHAAR_BACK);
+        File panFront = loadResourceFile(DriverConstants.PAN_FRONT);
 
-        Response response =
-                driverAPI.createDriver(request, licenseFront, licenseBack);
+        Response response = driverAPI.createDriver(
+                request,
+                licenseFront,
+                licenseBack,
+                aadhaarFront,
+                aadhaarBack,
+                panFront);
 
-        AllureHelper.attachResponse(
-                "Create Driver",
-                response.asPrettyString());
-
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Create Driver", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         driverValidation.validateDriverCreation(response);
     }
 
-    /**
-     * Duplicate phone / license validation
-     */
     public void validateDuplicatePhoneNumber() {
 
         AllureHelper.addStep("Duplicate Driver Validation");
@@ -79,26 +76,15 @@ public class DriverService {
 
         attachRequest("Duplicate Driver", request);
 
-        File licenseFront = loadResourceFile(DriverConstants.LICENSE_FRONT);
-        File licenseBack = loadResourceFile(DriverConstants.LICENSE_BACK);
+        // Same phone/license – no need for files if API rejects before upload
+        Response response = driverAPI.createDriver(request);
 
-        Response response =
-                driverAPI.createDriver(request, licenseFront, licenseBack);
-
-        AllureHelper.attachResponse(
-                "Duplicate Driver",
-                response.asPrettyString());
-
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Duplicate Driver", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         driverValidation.validateDuplicateDriver(response);
     }
 
-    /**
-     * Approve Driver
-     */
     public void approveDriver() {
 
         AllureHelper.addStep("Approve Driver");
@@ -108,23 +94,14 @@ public class DriverService {
 
         attachRequest("Approve Driver", request);
 
-        Response response =
-                driverAPI.approveDriver(request);
+        Response response = driverAPI.approveDriver(request);
 
-        AllureHelper.attachResponse(
-                "Approve Driver",
-                response.asPrettyString());
-
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Approve Driver", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         driverValidation.validateDriverApproval(response);
     }
 
-    /**
-     * Search Driver
-     */
     public void searchDriver() {
 
         AllureHelper.addStep("Search Driver");
@@ -134,23 +111,14 @@ public class DriverService {
 
         attachRequest("Search Driver", request);
 
-        Response response =
-                driverAPI.searchDriver(request);
+        Response response = driverAPI.searchDriver(request);
 
-        AllureHelper.attachResponse(
-                "Search Driver",
-                response.asPrettyString());
-
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Search Driver", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         driverValidation.validateDriverSearch(response);
     }
 
-    /**
-     * Update Driver (+ API & DB validation)
-     */
     public void updateDriver() {
 
         AllureHelper.addStep("Update Driver");
@@ -160,28 +128,19 @@ public class DriverService {
 
         attachRequest("Update Driver", request);
 
-        Response response =
-                driverAPI.updateDriver(request);
+        Response response = driverAPI.updateDriver(request);
 
-        AllureHelper.attachResponse(
-                "Update Driver",
-                response.asPrettyString());
-
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Update Driver", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         driverValidation.validateDriverUpdate(response);
     }
 
-    // -------------------------------------------------------------------------
-
     private File loadResourceFile(String classpathPath) {
         try {
-            URL resource =
-                    Objects.requireNonNull(
-                            getClass().getClassLoader().getResource(classpathPath),
-                            "Resource not found: " + classpathPath);
+            URL resource = Objects.requireNonNull(
+                    getClass().getClassLoader().getResource(classpathPath),
+                    "Resource not found: " + classpathPath);
             return new File(resource.toURI());
         } catch (URISyntaxException e) {
             throw new RuntimeException("Invalid resource path: " + classpathPath, e);
@@ -213,8 +172,6 @@ public class DriverService {
                 .append(System.lineSeparator());
         builder.append("State : ").append(request.getState());
 
-        AllureHelper.attachBusinessData(
-                "Driver Basic Information",
-                builder.toString());
+        AllureHelper.attachBusinessData("Driver Basic Information", builder.toString());
     }
 }

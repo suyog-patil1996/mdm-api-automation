@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class DriverDocument {
+
     private String documentCategory;
     private String documentNumber;
     private String countryCode;

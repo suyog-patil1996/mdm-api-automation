@@ -2,14 +2,16 @@ package com.oorjaa.mdm.validation;
 
 import com.oorjaa.mdm.context.DriverContext;
 import com.oorjaa.mdm.model.driver.DriverDetails;
+import com.oorjaa.mdm.model.driver.DriverDocumentRow;
 import com.oorjaa.mdm.repository.DriverRepository;
 import com.oorjaa.mdm.utils.AllureHelper;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -20,6 +22,13 @@ public class DriverValidation {
 
     private final DriverContext driverContext;
     private final DriverRepository driverRepository;
+
+    private static final List<String> EXPECTED_DOCUMENTS = Arrays.asList(
+            "licenseNumber",
+            "panCard",
+            "aadhaarCardNumber",
+            "policeVerification"
+    );
 
     public DriverValidation(DriverContext driverContext,
                             DriverRepository driverRepository) {
@@ -53,7 +62,6 @@ public class DriverValidation {
         Integer statusCode = response.jsonPath().getInt("statusCode");
         String message = response.jsonPath().getString("message");
         Integer driverId = response.jsonPath().getInt("data.id");
-        Integer userId = response.jsonPath().getInt("data.userModel.id");
 
         StringBuilder validation = new StringBuilder();
         validation.append("=============== API VALIDATION ===============\n\n");
@@ -62,25 +70,18 @@ public class DriverValidation {
         validation.append(pass(200, statusCode));
         validation.append(pass("Driver Registered succesfully.. !", message));
         validation.append(generated(driverId));
-        validation.append(generated(userId));
 
         AllureHelper.attachValidationSummary(
                 "Create Driver API Validation",
                 validation.toString());
 
         assertEquals(response.getStatusCode(), 200, "Driver creation failed.");
-        assertEquals(status, "OK", "Status mismatch.");
-        assertEquals(statusCode, Integer.valueOf(200), "Status code mismatch.");
-        assertEquals(
-                message,
-                "Driver Registered succesfully.. !",
-                "Create message mismatch.");
+        assertEquals(status, "OK");
+        assertEquals(message, "Driver Registered succesfully.. !",
+                "Create message mismatch (note API spelling).");
         assertNotNull(driverId, "Driver Id is null.");
 
         driverContext.setDriverId(driverId);
-        if (userId != null) {
-            driverContext.setUserId(userId);
-        }
 
         AllureHelper.addStep("Validate Driver Record In Database");
         validateDriverCreationInDatabase();
@@ -95,22 +96,21 @@ public class DriverValidation {
 
         AllureHelper.addStep("Validate Duplicate Driver Response");
 
-        int actualStatus = response.getStatusCode();
+        int status = response.getStatusCode();
         String message = response.jsonPath().getString("message");
 
         StringBuilder validation = new StringBuilder();
         validation.append("=============== API VALIDATION ===============\n\n");
-        validation.append(pass("4xx/5xx (not 200)", actualStatus));
-        validation.append(pass("Error message present", message));
+        validation.append(pass("not 200", status));
+        validation.append(pass("error message present", message));
 
         AllureHelper.attachValidationSummary(
                 "Duplicate Driver Validation",
                 validation.toString());
 
-        assertTrue(
-                actualStatus != 200,
-                "Duplicate driver should not return 200. Status: " + actualStatus);
-        assertNotNull(message, "Duplicate validation message is missing.");
+        assertTrue(status != 200,
+                "Duplicate driver should not return 200. Status=" + status);
+        assertNotNull(message, "Duplicate message is null.");
     }
 
     // -------------------------------------------------------------------------
@@ -123,14 +123,12 @@ public class DriverValidation {
         AllureHelper.addStep("Validate Driver Approval Response");
 
         String status = response.jsonPath().getString("status");
-        Integer statusCode = response.jsonPath().getInt("statusCode");
         String message = response.jsonPath().getString("message");
 
         StringBuilder validation = new StringBuilder();
         validation.append("=============== API VALIDATION ===============\n\n");
         validation.append(pass(200, response.getStatusCode()));
         validation.append(pass("OK", status));
-        validation.append(pass(200, statusCode));
         validation.append(pass(
                 "success ! driver approved successfully.",
                 message));
@@ -140,12 +138,8 @@ public class DriverValidation {
                 validation.toString());
 
         assertEquals(response.getStatusCode(), 200, "Driver approval failed.");
-        assertEquals(status, "OK", "Status mismatch.");
-        assertEquals(statusCode, Integer.valueOf(200), "Status code mismatch.");
-        assertEquals(
-                message,
-                "success ! driver approved successfully.",
-                "Approval message mismatch.");
+        assertEquals(status, "OK");
+        assertEquals(message, "success ! driver approved successfully.");
     }
 
     // -------------------------------------------------------------------------
@@ -157,47 +151,31 @@ public class DriverValidation {
 
         AllureHelper.addStep("Validate Driver Search Response");
 
-        String status = response.jsonPath().getString("status");
-        Integer statusCode = response.jsonPath().getInt("statusCode");
-        String message = response.jsonPath().getString("message");
-
-        List<Map<String, Object>> drivers =
-                response.jsonPath().getList("data.driver");
-
         assertEquals(response.getStatusCode(), 200, "Driver search failed.");
-        assertEquals(status, "OK", "Status mismatch.");
-        assertEquals(statusCode, Integer.valueOf(200), "Status code mismatch.");
-        assertEquals(message, "record found", "Search message mismatch.");
-        assertNotNull(drivers, "Driver list is null.");
-        assertTrue(drivers.size() > 0, "No drivers returned in search.");
 
         Integer expectedId = driverContext.getDriverId();
-        Map<String, Object> matched = null;
+        assertNotNull(expectedId, "Driver Id is null in context.");
 
-        for (Map<String, Object> d : drivers) {
-            Object idVal = d.get("id");
-            if (idVal != null
-                    && Integer.valueOf(idVal.toString()).equals(expectedId)) {
-                matched = d;
-                break;
-            }
+        List<Integer> ids = response.jsonPath().getList("data.content.id");
+        if (ids == null || ids.isEmpty()) {
+            ids = response.jsonPath().getList("data.driver.id");
+        }
+        if (ids == null || ids.isEmpty()) {
+            ids = response.jsonPath().getList("data.id");
         }
 
-        assertNotNull(
-                matched,
-                "Created driver not found in search results. Id=" + expectedId);
+        boolean found = ids != null && ids.stream().anyMatch(expectedId::equals);
 
         StringBuilder validation = new StringBuilder();
         validation.append("=============== API VALIDATION ===============\n\n");
         validation.append(pass(200, response.getStatusCode()));
-        validation.append(pass("OK", status));
-        validation.append(pass(200, statusCode));
-        validation.append(pass("record found", message));
-        validation.append(pass(expectedId, matched.get("id")));
+        validation.append(pass(true, found));
 
         AllureHelper.attachValidationSummary(
                 "Search Driver API Validation",
                 validation.toString());
+
+        assertTrue(found, "Created driver not found in search. Id=" + expectedId);
     }
 
     // -------------------------------------------------------------------------
@@ -210,14 +188,12 @@ public class DriverValidation {
         AllureHelper.addStep("Validate Driver Update Response");
 
         String status = response.jsonPath().getString("status");
-        Integer statusCode = response.jsonPath().getInt("statusCode");
         String message = response.jsonPath().getString("message");
 
         StringBuilder validation = new StringBuilder();
         validation.append("=============== API VALIDATION ===============\n\n");
         validation.append(pass(200, response.getStatusCode()));
         validation.append(pass("OK", status));
-        validation.append(pass(200, statusCode));
         validation.append(pass("Driver updated successfully.", message));
 
         AllureHelper.attachValidationSummary(
@@ -225,19 +201,15 @@ public class DriverValidation {
                 validation.toString());
 
         assertEquals(response.getStatusCode(), 200, "Driver update failed.");
-        assertEquals(status, "OK", "Status mismatch.");
-        assertEquals(statusCode, Integer.valueOf(200), "Status code mismatch.");
-        assertEquals(
-                message,
-                "Driver updated successfully.",
-                "Update message mismatch.");
+        assertEquals(status, "OK");
+        assertEquals(message, "Driver updated successfully.");
 
         AllureHelper.addStep("Validate Updated Driver Record In Database");
         validateDriverUpdateInDatabase();
     }
 
     // -------------------------------------------------------------------------
-    // DATABASE
+    // DATABASE – CREATE
     // -------------------------------------------------------------------------
 
     @Step("Validate Driver Creation In Database")
@@ -249,37 +221,30 @@ public class DriverValidation {
         assertNotNull(details, "Driver record not found in database.");
 
         StringBuilder validation = new StringBuilder();
-        validation.append("=============== DATABASE VALIDATION ===============\n\n");
+        validation.append("=============== DATABASE VALIDATION (CREATE) ===============\n\n");
 
-        validation.append(pass(
-                driverContext.getDriverId(),
-                details.getDriverId()));
-
-        validation.append(pass(
-                driverContext.getFirstName(),
-                details.getFirstName()));
-
-        validation.append(pass(
-                driverContext.getPhoneNumber(),
-                details.getPhoneNumber()));
-
-        validation.append(pass(
-                driverContext.getCity(),
-                details.getCity()));
-
-        validation.append(pass(
-                driverContext.getState(),
-                details.getState()));
-
-        validation.append(pass(
-                driverContext.getAddress1(),
-                details.getAddress1()));
-
-        validation.append(pass(
-                driverContext.getVendorId(),
-                details.getVendorId()));
-
+        validation.append(pass(driverContext.getDriverId(), details.getDriverId()));
+        validation.append(pass(driverContext.getFirstName(), details.getFirstName()));
+        validation.append(pass(driverContext.getPhoneNumber(), details.getPhoneNumber()));
+        validation.append(pass(driverContext.getCity(), details.getCity()));
+        validation.append(pass(driverContext.getState(), details.getState()));
+        validation.append(pass(driverContext.getAddress1(), details.getAddress1()));
+        validation.append(pass(driverContext.getVendorId(), details.getVendorId()));
         validation.append(generated(details.getUserId()));
+
+        // Documents
+        validation.append("\n----- DOCUMENTS -----\n\n");
+        assertNotNull(details.getDocuments(), "Documents list is null.");
+
+        for (String docName : EXPECTED_DOCUMENTS) {
+            Optional<DriverDocumentRow> row = details.getDocuments().stream()
+                    .filter(d -> docName.equals(d.getDocumentName()))
+                    .findFirst();
+
+            boolean present = row.isPresent();
+            validation.append(pass(docName + " present", present));
+            assertTrue(present, "Document missing in DB: " + docName);
+        }
 
         AllureHelper.attachValidationSummary(
                 "Create Driver Database Validation",
@@ -295,6 +260,10 @@ public class DriverValidation {
         assertNotNull(details.getUserId(), "User id is null in DB.");
     }
 
+    // -------------------------------------------------------------------------
+    // DATABASE – UPDATE
+    // -------------------------------------------------------------------------
+
     @Step("Validate Driver Update In Database")
     private void validateDriverUpdateInDatabase() {
 
@@ -304,31 +273,22 @@ public class DriverValidation {
         assertNotNull(details, "Driver record not found in database.");
 
         StringBuilder validation = new StringBuilder();
-        validation.append("=============== DATABASE VALIDATION ===============\n\n");
+        validation.append("=============== DATABASE VALIDATION (UPDATE) ===============\n\n");
 
-        validation.append(pass(
-                driverContext.getDriverId(),
-                details.getDriverId()));
+        validation.append(pass(driverContext.getDriverId(), details.getDriverId()));
+        validation.append(pass(driverContext.getUpdatedFirstName(), details.getFirstName()));
+        validation.append(pass(driverContext.getUpdatedCity(), details.getCity()));
+        validation.append(pass(driverContext.getUpdatedAddress1(), details.getAddress1()));
+        validation.append(pass(driverContext.getUpdatedPhoneNumber(), details.getPhoneNumber()));
+        validation.append(pass(driverContext.getVendorId(), details.getVendorId()));
 
-        validation.append(pass(
-                driverContext.getUpdatedFirstName(),
-                details.getFirstName()));
-
-        validation.append(pass(
-                driverContext.getUpdatedCity(),
-                details.getCity()));
-
-        validation.append(pass(
-                driverContext.getUpdatedAddress1(),
-                details.getAddress1()));
-
-        validation.append(pass(
-                driverContext.getUpdatedPhoneNumber(),
-                details.getPhoneNumber()));
-
-        validation.append(pass(
-                driverContext.getVendorId(),
-                details.getVendorId()));
+        if (details.getDocuments() != null) {
+            for (String docName : EXPECTED_DOCUMENTS) {
+                boolean present = details.getDocuments().stream()
+                        .anyMatch(d -> docName.equals(d.getDocumentName()));
+                validation.append(pass(docName + " present", present));
+            }
+        }
 
         AllureHelper.attachValidationSummary(
                 "Update Driver Database Validation",

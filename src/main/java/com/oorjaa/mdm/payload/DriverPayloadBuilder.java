@@ -9,28 +9,34 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class DriverPayloadBuilder {
 
     private final DriverContext driverContext;
+    private final Random random = new Random();
 
     public DriverPayloadBuilder(DriverContext driverContext) {
         this.driverContext = driverContext;
     }
 
     public CreateDriverRequest buildCreateDriverRequest() {
-        String phone = TestDataGenerator.generatePhoneNumber(); // implement if needed
-        String license = "DL" + System.currentTimeMillis() % 100000000;
+
+        String phone10 = TestDataGenerator.generatePhoneNumber();
+        String phone = "+91" + phone10;
+        String altPhone = String.valueOf(1000000000L + random.nextInt(900000000));
+        String license = "MH12ETW" + (100000 + random.nextInt(900000));
         String firstName = "AUTO_DRV";
-        String address1 = "Pune";
+        String pan = TestDataGenerator.generatePanNumber();
+        String aadhaar = TestDataGenerator.generateAadharNumber();
 
         driverContext.setVendorId(DriverConstants.DEFAULT_VENDOR_ID);
         driverContext.setFirstName(firstName);
         driverContext.setLastName("");
-        driverContext.setPhoneNumber("+91" + phone);
+        driverContext.setPhoneNumber(phone);
         driverContext.setDrivingLicense(license);
-        driverContext.setAddress1(address1);
+        driverContext.setAddress1("Pune");
         driverContext.setCity(DriverConstants.CITY);
         driverContext.setState(DriverConstants.STATE);
         driverContext.setCountry(DriverConstants.COUNTRY);
@@ -45,8 +51,8 @@ public class DriverPayloadBuilder {
                 .firstName(firstName)
                 .middleName(null)
                 .lastName("")
-                .phoneNumber("+91" + phone)
-                .alternatePhoneNumber(null)
+                .phoneNumber(phone)
+                .alternatePhoneNumber(altPhone)
                 .vehicleClasses(Collections.emptyList())
                 .countryId(DriverConstants.COUNTRY_ID)
                 .stateId(DriverConstants.STATE_ID)
@@ -54,11 +60,12 @@ public class DriverPayloadBuilder {
                 .country(DriverConstants.COUNTRY)
                 .state(DriverConstants.STATE)
                 .city(DriverConstants.CITY)
-                .address1(address1)
-                .address2(null)
-                .address3(null)
+                .address1("Pune")
+                .address2("Baner")
+                .address3("Baner gaon")
+                .password(DriverConstants.DEFAULT_PASSWORD)
                 .isLicenceVerified(false)
-                .documents(buildDocuments(license, "AABCG1234D", "134145561788"))
+                .documents(buildDocuments(license, pan, aadhaar, "NOT_STARTED"))
                 .vehicleRegistrationNumber(null)
                 .isVehicleAssigned(false)
                 .permanentDeliveryCenterId(null)
@@ -68,7 +75,9 @@ public class DriverPayloadBuilder {
 
     public CreateDriverRequest buildDuplicateDriverRequest() {
 
-        // Do NOT call buildCreateDriverRequest() — that overwrites DriverContext
+        String pan = TestDataGenerator.generatePanNumber();
+        String aadhaar = TestDataGenerator.generateAadharNumber();
+
         return CreateDriverRequest.builder()
                 .id(null)
                 .vendorId(driverContext.getVendorId())
@@ -90,13 +99,15 @@ public class DriverPayloadBuilder {
                 .state(DriverConstants.STATE)
                 .city(DriverConstants.CITY)
                 .address1(driverContext.getAddress1())
-                .address2(null)
-                .address3(null)
+                .address2("Baner")
+                .address3("Baner gaon")
+                .password(DriverConstants.DEFAULT_PASSWORD)
                 .isLicenceVerified(false)
                 .documents(buildDocuments(
                         driverContext.getDrivingLicense(),
-                        "AABCG1234D",
-                        "134145561788"))
+                        pan,
+                        aadhaar,
+                        "NOT_STARTED"))
                 .vehicleRegistrationNumber(null)
                 .isVehicleAssigned(false)
                 .permanentDeliveryCenterId(null)
@@ -112,24 +123,26 @@ public class DriverPayloadBuilder {
     }
 
     public SearchDriverRequest buildSearchDriverRequest() {
-        // search by last digits of phone or driver id
-        String keyword = String.valueOf(driverContext.getDriverId());
+        // If only limit + searchText:
         return SearchDriverRequest.builder()
                 .limit(10)
-                .page(0)
-                .searchKeyword(keyword)
-                .sortField("createdDate")
-                .sortOrder("desc")
-                .dcId(null)
-                .vendorId(null)
+                .searchKeyword(String.valueOf(driverContext.getPhoneNumber()))
                 .build();
     }
 
     public UpdateDriverRequest buildUpdateDriverRequest() {
-        driverContext.setUpdatedFirstName("AUTO_DRV_UPD");
+
+        String updatedFirstName = "AUTO_DRV_UPD";
+        String updatedPhone10 = TestDataGenerator.generatePhoneNumber();
+        String updatedPhone = "+91" + updatedPhone10;
+        String altPhone = String.valueOf(1000000000L + random.nextInt(900000000));
+        String pan = TestDataGenerator.generatePanNumber();
+        String aadhaar = TestDataGenerator.generateAadharNumber();
+
+        driverContext.setUpdatedFirstName(updatedFirstName);
         driverContext.setUpdatedAddress1("Mumbai");
         driverContext.setUpdatedCity("Mumbai");
-        driverContext.setUpdatedPhoneNumber(driverContext.getPhoneNumber());
+        driverContext.setUpdatedPhoneNumber(updatedPhone);
 
         return UpdateDriverRequest.builder()
                 .id(driverContext.getDriverId())
@@ -138,26 +151,27 @@ public class DriverPayloadBuilder {
                 .deliveryCenterId(null)
                 .drivingLicense(driverContext.getDrivingLicense())
                 .dateOfBirth(null)
-                .firstName("AUTO_DRV_UPD")
+                .firstName(updatedFirstName)
                 .middleName(null)
                 .lastName("")
-                .phoneNumber(driverContext.getPhoneNumber())
-                .alternatePhoneNumber(null)
+                .phoneNumber(updatedPhone)
+                .alternatePhoneNumber(altPhone)
                 .vehicleClasses(Collections.emptyList())
                 .countryId(DriverConstants.COUNTRY_ID)
                 .stateId(DriverConstants.STATE_ID)
-                .cityId("9c982574-3c25-11ee-bd0f-0a9d1c57a228") // Mumbai from your sample
+                .cityId(DriverConstants.MUMBAI_CITY_ID)
                 .country(DriverConstants.COUNTRY)
                 .state(DriverConstants.STATE)
                 .city("Mumbai")
                 .address1("Mumbai")
-                .address2(null)
-                .address3(null)
+                .address2("Andheri")
+                .address3("Mcdonalds")
                 .isLicenceVerified(false)
                 .documents(buildDocuments(
                         driverContext.getDrivingLicense(),
-                        "AABCG1234S",
-                        "134145561733"))
+                        pan,
+                        aadhaar,
+                        "VERIFIED"))
                 .vehicleRegistrationNumber(null)
                 .isVehicleAssigned(false)
                 .permanentDeliveryCenterId(null)
@@ -165,7 +179,12 @@ public class DriverPayloadBuilder {
                 .build();
     }
 
-    private List<DriverDocument> buildDocuments(String license, String pan, String aadhaar) {
+    private List<DriverDocument> buildDocuments(
+            String license,
+            String pan,
+            String aadhaar,
+            String policeStatus) {
+
         return Arrays.asList(
                 DriverDocument.builder()
                         .documentCategory("DRIVING_LICENSE")
@@ -193,7 +212,7 @@ public class DriverPayloadBuilder {
                         .documentName("policeVerification")
                         .issueDate("")
                         .expiryDate("")
-                        .verificationStatus("NOT_STARTED")
+                        .verificationStatus(policeStatus)
                         .build()
         );
     }

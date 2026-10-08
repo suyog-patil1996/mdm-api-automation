@@ -2,6 +2,8 @@ package com.oorjaa.mdm.model.driver;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class DriverDetails {
 
@@ -21,4 +23,14 @@ public class DriverDetails {
     private String updatedDate;
     private String address1;
     private Integer vendorId;
+
+    private List<DriverDocumentRow> documents;
+
+    public List<DriverDocumentRow> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<DriverDocumentRow> documents) {
+        this.documents = documents;
+    }
 }

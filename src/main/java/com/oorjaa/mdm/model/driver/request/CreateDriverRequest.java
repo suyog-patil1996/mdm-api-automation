@@ -2,11 +2,13 @@ package com.oorjaa.mdm.model.driver.request;
 
 import lombok.Builder;
 import lombok.Data;
+
 import java.util.List;
 
 @Data
 @Builder
 public class CreateDriverRequest {
+
     private Integer id;
     private Integer vendorId;
     private Integer vehicleId;
@@ -28,6 +30,7 @@ public class CreateDriverRequest {
     private String address1;
     private String address2;
     private String address3;
+    private String password;
     private Boolean isLicenceVerified;
     private List<DriverDocument> documents;
     private String vehicleRegistrationNumber;

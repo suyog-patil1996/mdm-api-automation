@@ -196,7 +196,7 @@ public class VendorPayloadBuilder {
 
     public SearchVendorRequest buildSearchVendorRequest() {
         return SearchVendorRequest.builder()
-                .searchText(vendorContext.getVendorName())
+                .searchText(vendorContext.getPhoneNumber())
                 .pageId(0)
                 .limit(10)
                 .build();

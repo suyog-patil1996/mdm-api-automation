@@ -3,10 +3,7 @@ package com.oorjaa.mdm.api;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oorjaa.mdm.constants.ApiEndpoints;
-import com.oorjaa.mdm.model.driver.request.ApproveDriverRequest;
-import com.oorjaa.mdm.model.driver.request.CreateDriverRequest;
-import com.oorjaa.mdm.model.driver.request.SearchDriverRequest;
-import com.oorjaa.mdm.model.driver.request.UpdateDriverRequest;
+import com.oorjaa.mdm.model.driver.request.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
@@ -26,11 +23,25 @@ public class DriverAPI {
 
     public Response createDriver(CreateDriverRequest request,
                                  File licenseFront,
-                                 File licenseBack) {
+                                 File licenseBack,
+                                 File aadhaarFront,
+                                 File aadhaarBack,
+                                 File panFront) {
+
         return baseAPI.request()
                 .multiPart("data", toJson(request), "application/json")
                 .multiPart("licenseNumber_front", licenseFront, "image/jpeg")
                 .multiPart("licenseNumber_back", licenseBack, "image/jpeg")
+                .multiPart("aadhaarCardNumber_front", aadhaarFront, "image/jpeg")
+                .multiPart("aadhaarCardNumber_back", aadhaarBack, "image/jpeg")
+                .multiPart("panCard_front", panFront, "image/jpeg")
+                .when()
+                .post(ApiEndpoints.CREATE_DRIVER);
+    }
+
+    public Response createDriver(CreateDriverRequest request) {
+        return baseAPI.request()
+                .multiPart("data", toJson(request), "application/json")
                 .when()
                 .post(ApiEndpoints.CREATE_DRIVER);
     }
