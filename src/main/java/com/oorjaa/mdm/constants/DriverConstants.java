@@ -16,7 +16,7 @@ public final class DriverConstants {
 
     // Matches files in src/test/resources/testdata/
     public static final String LICENSE_FRONT =
-            "testdata/DRIVING_LICENSE_FRONT.jpg";
+            "testdata/driver/DRIVING_LICENSE_FRONT.jpg";
     public static final String LICENSE_BACK =
-            "testdata/DRIVING_LICENSE_BACK.jpg";
+            "testdata/driver/DRIVING_LICENSE_BACK.jpg";
 }

@@ -3,6 +3,7 @@ package com.oorjaa.mdm.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oorjaa.mdm.api.VendorAPI;
+import com.oorjaa.mdm.constants.VendorConstants;
 import com.oorjaa.mdm.model.vendor.request.ApproveVendorRequest;
 import com.oorjaa.mdm.model.vendor.request.CreateVendorRequest;
 import com.oorjaa.mdm.model.vendor.request.SearchVendorRequest;
@@ -12,6 +13,8 @@ import com.oorjaa.mdm.utils.AllureHelper;
 import com.oorjaa.mdm.validation.VendorValidation;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
 
 @Service
 public class VendorService {
@@ -43,21 +46,39 @@ public class VendorService {
                 payloadBuilder.buildCreateVendorRequest();
 
         attachVendorInformation(request);
-
         attachRequest("Create Vendor", request);
 
-        Response response =
-                vendorAPI.createVendor(request);
+        File panFront = loadResourceFile(VendorConstants.DOC_PAN_FRONT);
+        File aadhaarFront = loadResourceFile(VendorConstants.DOC_AADHAAR_FRONT);
+        File aadhaarBack = loadResourceFile(VendorConstants.DOC_AADHAAR_BACK);
+        File cheque = loadResourceFile(VendorConstants.DOC_CANCELLED_CHEQUE);
+        File gst = loadResourceFile(VendorConstants.DOC_GST);
+        File msme = loadResourceFile(VendorConstants.DOC_MSME);
 
-        AllureHelper.attachResponse(
-                "Create Vendor",
-                response.asPrettyString());
+        Response response = vendorAPI.createVendor(
+                request,
+                panFront,
+                aadhaarFront,
+                aadhaarBack,
+                cheque,
+                gst,
+                msme);
 
-        AllureHelper.attachResponseDetails(
-                response.getStatusCode(),
-                response.time());
+        AllureHelper.attachResponse("Create Vendor", response.asPrettyString());
+        AllureHelper.attachResponseDetails(response.getStatusCode(), response.time());
 
         vendorValidation.validateVendorCreation(response);
+    }
+
+    private File loadResourceFile(String classpathPath) {
+        try {
+            java.net.URL resource = java.util.Objects.requireNonNull(
+                    getClass().getClassLoader().getResource(classpathPath),
+                    "Resource not found: " + classpathPath);
+            return new File(resource.toURI());
+        } catch (Exception e) {
+            throw new RuntimeException("Invalid resource path: " + classpathPath, e);
+        }
     }
 
     /**

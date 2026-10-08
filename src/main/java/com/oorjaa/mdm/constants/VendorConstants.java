@@ -13,4 +13,17 @@ public final class VendorConstants {
     public static final Integer DEFAULT_VEHICLE_ID = 82;
 
     public static final String ZIP_CODE = "411045";
+    // Document images (classpath under src/test/resources)
+    public static final String DOC_PAN_FRONT =
+            "testdata/vendor/pan_front.jpg";
+    public static final String DOC_AADHAAR_FRONT =
+            "testdata/vendor/aadhaar_front.jpg";
+    public static final String DOC_AADHAAR_BACK =
+            "testdata/vendor/aadhaar_back.jpg";
+    public static final String DOC_CANCELLED_CHEQUE =
+            "testdata/vendor/cancelled_cheque.png";
+    public static final String DOC_GST =
+            "testdata/vendor/gst_certificate.jpg";
+    public static final String DOC_MSME =
+            "testdata/vendor/msme_certificate.png";
 }

@@ -170,9 +170,9 @@ public class VendorPayloadBuilder {
     public SearchVendorRequest buildSearchVendorRequest() {
 
         return SearchVendorRequest.builder()
-                .searchKeyword(vendorContext.getVendorName())
-                .page(0)
-                .size(10)
+                .searchText(vendorContext.getVendorName())
+                .pageId(0)
+                .limit(10)
                 .build();
     }
 
